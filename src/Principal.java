@@ -1,3 +1,8 @@
+
+import java.io.File;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -27,6 +32,8 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jp_Archivo = new javax.swing.JPanel();
+        jtp_Principal = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jm_archivo = new javax.swing.JMenu();
         jmi_newarch = new javax.swing.JMenuItem();
@@ -51,11 +58,27 @@ public class Principal extends javax.swing.JFrame {
         jmi_expexcel = new javax.swing.JMenuItem();
         jmi_expXML = new javax.swing.JMenuItem();
 
+        javax.swing.GroupLayout jp_ArchivoLayout = new javax.swing.GroupLayout(jp_Archivo);
+        jp_Archivo.setLayout(jp_ArchivoLayout);
+        jp_ArchivoLayout.setHorizontalGroup(
+            jp_ArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jp_ArchivoLayout.setVerticalGroup(
+            jp_ArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jm_archivo.setText("Archivo");
 
         jmi_newarch.setText("Nuevo Archivo");
+        jmi_newarch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_newarchActionPerformed(evt);
+            }
+        });
         jm_archivo.add(jmi_newarch);
 
         jmi_salvararch.setText("Salvar Archivo");
@@ -130,15 +153,36 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1154, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jtp_Principal, javax.swing.GroupLayout.DEFAULT_SIZE, 1130, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 543, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jtp_Principal, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jmi_newarchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_newarchActionPerformed
+        // TODO add your handling code here:
+        JPanel p = new JPanel();
+        String nombre;
+
+        p = jp_Archivo;
+
+        nombre = JOptionPane.showInputDialog(this, "Ingrese Nombre: ");
+        metadata = nombre;
+        p.setName(nombre);
+
+        jtp_Principal.add(p);
+        archivo.setNombre(nombre);
+    }//GEN-LAST:event_jmi_newarchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,5 +244,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_reindex;
     private javax.swing.JMenuItem jmi_salir;
     private javax.swing.JMenuItem jmi_salvararch;
+    private javax.swing.JPanel jp_Archivo;
+    private javax.swing.JTabbedPane jtp_Principal;
     // End of variables declaration//GEN-END:variables
+    Archivo archivo = new Archivo();
+    String metadata = "";
 }
