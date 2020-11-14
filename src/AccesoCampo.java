@@ -45,11 +45,13 @@ public class AccesoCampo {
     public static int getNumeroRegistros() {
         return numeroRegistros;
     }
+    
     public void escribirMetadata(String metadata) throws IOException{
         flujo.seek(0);
         flujo.writeUTF(metadata);
         numeroRegistros++;
     }
+    
     public  void escribirCampos(ArrayList<Campo> campos, String metadata) throws IOException{
         flujo.seek(numeroRegistros*tamanoRegistro);
         int numerodeCampos = campos.size();
@@ -83,6 +85,7 @@ public class AccesoCampo {
         numeroRegistros++;
         return flujo.readUTF();
     }
+    
     public int leerNumRegistros() throws IOException{
         int retur;
         flujo.seek(1*tamanoRegistro);
@@ -92,6 +95,7 @@ public class AccesoCampo {
         tamRegistro = retur;
         return retur;
     }
+    
     public void escribirNumRegistros(ArrayList<Registro>registros) throws IOException{
         flujo.seek(numeroRegistros*tamanoRegistro);
         int numerodeRegistros = registros.size();
@@ -147,7 +151,6 @@ public class AccesoCampo {
     public Registro devolverRegistro(int x) throws IOException{
         Registro registro=null;
         ArrayList<Campo> nada = new ArrayList();
-        //registro.setCampos(nada);
         if (tamCampo == 0) {
             System.out.println("Tiene que cargar primero");
         }else{
@@ -164,8 +167,7 @@ public class AccesoCampo {
         }
         return registro;
     }
-    
-   
+     
     public  void modificarRegistro(int x,Registro temp) throws IOException{
         if (tamCampo == 0) {
             System.out.println("Tiene que cargar primero");
@@ -182,6 +184,7 @@ public class AccesoCampo {
             }
         }
     }
+    
     public void modificarCampo(int x,String temp) throws IOException{
         if (tamCampo == 0) {
             System.out.println("Tiene que cargar primero");
@@ -226,6 +229,7 @@ public class AccesoCampo {
             return null;
         }
     }
+    
     public static Campo getCampoReg(int i) throws IOException {
         if (i >= 0 && i <= getNumeroRegistros()){
             flujo.seek(i * tamanoRegistro);
@@ -243,8 +247,6 @@ public class AccesoCampo {
             } else {
                 flujo.seek(i*tamanoRegistro);
                 flujo.writeUTF(campo.getContenido());
-                //tamCampo++;
-                //flujo.writeBoolean(persona.isActivo());
                 return true;
             }
         } else {
