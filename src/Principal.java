@@ -1,8 +1,20 @@
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -22,7 +34,7 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
     }
-
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -82,12 +94,27 @@ public class Principal extends javax.swing.JFrame {
         jm_archivo.add(jmi_newarch);
 
         jmi_salvararch.setText("Salvar Archivo");
+        jmi_salvararch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_salvararchActionPerformed(evt);
+            }
+        });
         jm_archivo.add(jmi_salvararch);
 
         jmi_closearch.setText("Cerrar Archivo");
+        jmi_closearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_closearchActionPerformed(evt);
+            }
+        });
         jm_archivo.add(jmi_closearch);
 
         jmi_salir.setText("Salir");
+        jmi_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_salirActionPerformed(evt);
+            }
+        });
         jm_archivo.add(jmi_salir);
 
         jMenuBar1.add(jm_archivo);
@@ -184,6 +211,57 @@ public class Principal extends javax.swing.JFrame {
         archivo.setNombre(nombre);
     }//GEN-LAST:event_jmi_newarchActionPerformed
 
+    private void jmi_salvararchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_salvararchActionPerformed
+        // TODO add your handling code here:
+        AccesoCampo cam = new AccesoCampo();
+        File archive;
+        try {
+
+            archive = new File("./" + metadata + ".txt");
+            for (int i = 0; i < registros.size(); i++) {
+                System.out.println("Registro #" + i);
+                for (int j = 0; j < campos.size(); j++) {
+                    System.out.println("Campo #" + i + " :" + registros.get(i).getCampos().get(j).getContenido());
+                }
+            }
+
+            archive = new File("./" + metadata + ".txt");
+
+            cam.crearFileCampo(archive);
+            cam.escribirMetadata(metadata);
+            cam.escribirNumRegistros(registros);
+            cam.escribirCampos(campos, metadata);
+            cam.escribirRegistro(registros);
+            JOptionPane.showMessageDialog(null, "Se ha guardado exitosamente!");
+            
+            cam.cerrar();
+        } catch (IOException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        //Pasar la informacion correspondiente a las tablas
+
+    }//GEN-LAST:event_jmi_salvararchActionPerformed
+
+    private void jmi_closearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_closearchActionPerformed
+        // TODO add your handling code here:
+        archivo = new Archivo();
+        
+        JPanel p = new JPanel();
+        
+        jtp_Principal.removeAll();
+        
+        registros = new ArrayList();
+        campos = new ArrayList();
+        
+        cargado = false;
+    }//GEN-LAST:event_jmi_closearchActionPerformed
+
+    private void jmi_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_salirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jmi_salirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -247,6 +325,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jp_Archivo;
     private javax.swing.JTabbedPane jtp_Principal;
     // End of variables declaration//GEN-END:variables
+    ArrayList<Campo> campos = new ArrayList();
+    ArrayList<Registro> registros = new ArrayList();
     Archivo archivo = new Archivo();
+    JPanel p = new JPanel();
+    File archivoGuardar = null;
     String metadata = "";
+    Boolean cargado=false;
 }
