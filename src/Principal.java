@@ -66,6 +66,7 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbl_ListarCamp = new javax.swing.JTable();
         jbtn_cargar = new javax.swing.JButton();
+        jbtn_abrir = new javax.swing.JButton();
         jtp_Principal = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jm_archivo = new javax.swing.JMenu();
@@ -233,6 +234,13 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jbtn_abrir.setText("Abrir");
+        jbtn_abrir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_abrirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jd_listarCampLayout = new javax.swing.GroupLayout(jd_listarCamp.getContentPane());
         jd_listarCamp.getContentPane().setLayout(jd_listarCampLayout);
         jd_listarCampLayout.setHorizontalGroup(
@@ -246,7 +254,9 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(45, 45, 45)
                         .addComponent(jcmb_lista_Arch_Camp, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(105, 105, 105)
-                        .addComponent(jbtn_cargar)))
+                        .addComponent(jbtn_cargar)
+                        .addGap(64, 64, 64)
+                        .addComponent(jbtn_abrir)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jd_listarCampLayout.setVerticalGroup(
@@ -260,7 +270,9 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(jcmb_lista_Arch_Camp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jd_listarCampLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addComponent(jbtn_cargar)))
+                        .addGroup(jd_listarCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jbtn_cargar)
+                            .addComponent(jbtn_abrir))))
                 .addGap(76, 76, 76)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(135, Short.MAX_VALUE))
@@ -504,11 +516,12 @@ public class Principal extends javax.swing.JFrame {
         
         String nombre= JOptionPane.showInputDialog(null,"Nombre",JOptionPane.QUESTION_MESSAGE);
         Admin_Campos admin = new Admin_Campos(nombre+".rw");
+        admin.setCampos(campos);
         admin.Escribir();
         DefaultListModel modelo = new DefaultListModel();
-        DefaultComboBoxModel modelocmb = (DefaultComboBoxModel) jcmb_lista_Arch_Camp.getModel();
-        modelocmb.addElement(nombre);
-        jcmb_lista_Arch_Camp.setModel(modelocmb);
+//        DefaultComboBoxModel modelocmb = (DefaultComboBoxModel) jcmb_lista_Arch_Camp.getModel();
+//        modelocmb.addElement(nombre);
+//        jcmb_lista_Arch_Camp.setModel(modelocmb);
         jm_registros.setEnabled(true);
         jd_crearCamp.setVisible(false);
         
@@ -524,10 +537,17 @@ public class Principal extends javax.swing.JFrame {
 
     private void jbtn_cargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_cargarActionPerformed
         // TODO add your handling code here:
-        File carpeta = new File("/Proyecto_Estructuras_II/");
+        File carpeta = new File("../Proyecto_Estructuras_II/");
         ArrayList<String> docs = new ArrayList<String>();
         for (File archivo : carpeta.listFiles()) {
-            docs.add(archivo.getName());
+            if (archivo.isFile() && (archivo.getName().contains(".rw"))) {
+                docs.add(archivo.getName());
+            }
+        }
+        DefaultComboBoxModel modelocmb = (DefaultComboBoxModel) jcmb_lista_Arch_Camp.getModel();
+        for (int i = 0; i < docs.size(); i++) {
+            modelocmb.addElement(docs.get(i));
+            jcmb_lista_Arch_Camp.setModel(modelocmb);
         }
         for (int i = 0; i < docs.size(); i++) {
             System.out.println("Doc "+i);
@@ -537,10 +557,10 @@ public class Principal extends javax.swing.JFrame {
 
     private void jcmb_lista_Arch_CampItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcmb_lista_Arch_CampItemStateChanged
         // TODO add your handling code here:
-        if (evt.getStateChange() == 2) {
-            
-            Admin_Campos adm_camp = new Admin_Campos(jcmb_lista_Arch_Camp.getSelectedItem().toString());
-            adm_camp.Cargar();
+//        if (evt.getStateChange() == 2) {
+//            
+//            Admin_Campos adm_camp = new Admin_Campos(jcmb_lista_Arch_Camp.getSelectedItem().toString());
+//            adm_camp.Cargar();
 //            for (int i = 0; i < adm_camp.getCampos().size(); i++) {
 //                System.out.println("Campo "+i);
 //                System.out.println(adm_camp.getCampos().toString());
@@ -561,8 +581,29 @@ public class Principal extends javax.swing.JFrame {
 //            }
 
             
-        }
+//        }
     }//GEN-LAST:event_jcmb_lista_Arch_CampItemStateChanged
+
+    private void jbtn_abrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_abrirActionPerformed
+        // TODO add your handling code here:
+        String nombre = jcmb_lista_Arch_Camp.getSelectedItem().toString();
+        Admin_Campos admin = new Admin_Campos(nombre);
+        admin.Cargar();
+        for (int i = 0; i < admin.getCampos().size(); i++) {
+                System.out.println("Campo "+i);
+                System.out.println(admin.getCampos().toString());
+            }
+        DefaultTableModel modelo = new DefaultTableModel();
+        Object o[] = null;
+        for (int i = 0; i < admin.getCampos().size(); i++) {
+            modelo.addRow(o);
+            Campo getCamp = (Campo) admin.getCampos().get(i);
+            modelo.setValueAt(getCamp.getNombre(),i,0);
+            modelo.setValueAt(getCamp.getContenido(),i,1);
+            modelo.setValueAt(getCamp.getLongitud(),i,2);
+            modelo.setValueAt(getCamp.getPri(),i,3);
+        }
+    }//GEN-LAST:event_jbtn_abrirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -609,6 +650,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton jbtn_abrir;
     private javax.swing.JButton jbtn_agregarCamp;
     private javax.swing.JButton jbtn_cargar;
     private javax.swing.JButton jbtn_salirCamp;
