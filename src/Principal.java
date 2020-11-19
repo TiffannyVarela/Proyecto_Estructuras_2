@@ -415,8 +415,10 @@ public class Principal extends javax.swing.JFrame {
 
     private void jbtn_salirCampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_salirCampActionPerformed
         // TODO add your handling code here:
-        AccesoCampo ac;
-        String nombre;
+        
+        String nombre= JOptionPane.showInputDialog(null,"Nombre",JOptionPane.QUESTION_MESSAGE);
+        Admin_Campos admin = new Admin_Campos(nombre+".rw");
+        admin.Escribir();
         DefaultListModel modelo = new DefaultListModel();
         jm_registros.setEnabled(true);
         jd_crearCamp.setVisible(false);
