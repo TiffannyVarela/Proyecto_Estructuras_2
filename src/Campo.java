@@ -17,13 +17,13 @@ public class Campo implements Serializable{
     boolean pri = false;
     
     public Campo() {
+        pri = false;
     }
 
     public Campo(String Nombre, String contenido, int longitud) {
         this.Nombre = Nombre;
         this.contenido = contenido;
         this.longitud = longitud;
-        this.pri = pri;
     }
     
     ArrayList <String> contenidos = new ArrayList();

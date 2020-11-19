@@ -39,7 +39,7 @@
                                   <Component id="jtxt_nombCamp" max="32767" attributes="0"/>
                                   <Component id="jcmb_tipoCamp" pref="272" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="jbtn_si" min="-2" max="-2" attributes="0"/>
+                              <Component id="jcmb_primaria" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -74,10 +74,10 @@
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                               <Component id="jtxt_longCamp" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jbtn_si" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jcmb_primaria" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -175,10 +175,18 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="jbtn_si">
+        <Component class="javax.swing.JComboBox" name="jcmb_primaria">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Si"/>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="2">
+                <StringItem index="0" value="Si"/>
+                <StringItem index="1" value="No"/>
+              </StringArray>
+            </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

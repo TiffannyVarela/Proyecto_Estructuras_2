@@ -58,7 +58,7 @@ public class Principal extends javax.swing.JFrame {
         jbtn_salirCamp = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jlist_newCamp = new javax.swing.JList<>();
-        jbtn_si = new javax.swing.JButton();
+        jcmb_primaria = new javax.swing.JComboBox<>();
         jtp_Principal = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jm_archivo = new javax.swing.JMenu();
@@ -123,7 +123,7 @@ public class Principal extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(jlist_newCamp);
 
-        jbtn_si.setText("Si");
+        jcmb_primaria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Si", "No" }));
 
         javax.swing.GroupLayout jd_crearCampLayout = new javax.swing.GroupLayout(jd_crearCamp.getContentPane());
         jd_crearCamp.getContentPane().setLayout(jd_crearCampLayout);
@@ -144,7 +144,7 @@ public class Principal extends javax.swing.JFrame {
                             .addGroup(jd_crearCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jtxt_nombCamp)
                                 .addComponent(jcmb_tipoCamp, 0, 272, Short.MAX_VALUE))
-                            .addComponent(jbtn_si))))
+                            .addComponent(jcmb_primaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(71, 71, 71)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53)
@@ -170,10 +170,10 @@ public class Principal extends javax.swing.JFrame {
                         .addGroup(jd_crearCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4)
                             .addComponent(jtxt_longCamp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(72, 72, 72)
-                        .addGroup(jd_crearCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(78, 78, 78)
+                        .addGroup(jd_crearCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jbtn_si)))
+                            .addComponent(jcmb_primaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jd_crearCampLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jd_crearCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -382,21 +382,33 @@ public class Principal extends javax.swing.JFrame {
 
     private void jbtn_agregarCampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_agregarCampActionPerformed
         // TODO add your handling code here:
+        DefaultListModel modelo = new DefaultListModel();
         try {
             Campo campo;
             String nombreCamp = jtxt_nombCamp.getText();
             String tipoCamp = jcmb_tipoCamp.getSelectedItem().toString();
             int longitud = Integer.parseInt(jtxt_longCamp.getText());
             campo = new Campo(nombreCamp,tipoCamp,longitud);
-            if (jbtn_si.isSelected()) {
+            if (jcmb_primaria.getSelectedIndex()==0) {
                 campo.setPri(true);
-                jbtn_si.setEnabled(false);
+                jcmb_primaria.setEnabled(false);
+                jcmb_primaria.setSelectedIndex(1);
+            }
+            else{
+                campo.setPri(false);
             }
             campos.add(campo);
-            DefaultListModel modelo = (DefaultListModel) jlist_newCamp.getModel();
-            modelo.addElement(campo);
+            modelo.removeAllElements();;
+            //DefaultListModel modelo1 = (DefaultListModel) jlist_newCamp.getModel();
+            for (int i = 0; i < campos.size(); i++) {
+                modelo.addElement(campos.get(i));
+            }
             jlist_newCamp.setModel(modelo);
-            //jm_campos.setEnabled(true);
+            
+            jtxt_nombCamp.setText("");
+            jtxt_longCamp.setText("");
+            jcmb_tipoCamp.setSelectedIndex(0);
+            
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jbtn_agregarCampActionPerformed
@@ -405,6 +417,9 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         AccesoCampo ac;
         String nombre;
+        DefaultListModel modelo = new DefaultListModel();
+        jm_registros.setEnabled(true);
+        jd_crearCamp.setVisible(false);
         
     }//GEN-LAST:event_jbtn_salirCampActionPerformed
 
@@ -453,7 +468,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jbtn_agregarCamp;
     private javax.swing.JButton jbtn_salirCamp;
-    private javax.swing.JButton jbtn_si;
+    private javax.swing.JComboBox<String> jcmb_primaria;
     private javax.swing.JComboBox<String> jcmb_tipoCamp;
     private javax.swing.JDialog jd_crearCamp;
     private javax.swing.JList<String> jlist_newCamp;
