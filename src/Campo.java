@@ -71,7 +71,7 @@ public class Campo implements Serializable{
         this.longitud = longitud;
     }
 
-    public boolean isPri() {
+    public boolean getPri() {
         return pri;
     }
 

@@ -11,6 +11,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -59,6 +60,12 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jlist_newCamp = new javax.swing.JList<>();
         jcmb_primaria = new javax.swing.JComboBox<>();
+        jd_listarCamp = new javax.swing.JDialog();
+        jLabel5 = new javax.swing.JLabel();
+        jcmb_lista_Arch_Camp = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtbl_ListarCamp = new javax.swing.JTable();
+        jbtn_cargar = new javax.swing.JButton();
         jtp_Principal = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jm_archivo = new javax.swing.JMenu();
@@ -185,6 +192,80 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
+        jLabel5.setText("Archivos de Campos");
+
+        jcmb_lista_Arch_Camp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        jcmb_lista_Arch_Camp.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcmb_lista_Arch_CampItemStateChanged(evt);
+            }
+        });
+
+        jtbl_ListarCamp.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Tipo", "Longitud", "Llave Primaria"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jtbl_ListarCamp);
+
+        jbtn_cargar.setText("Cargar");
+        jbtn_cargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_cargarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_listarCampLayout = new javax.swing.GroupLayout(jd_listarCamp.getContentPane());
+        jd_listarCamp.getContentPane().setLayout(jd_listarCampLayout);
+        jd_listarCampLayout.setHorizontalGroup(
+            jd_listarCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_listarCampLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jd_listarCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jd_listarCampLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(45, 45, 45)
+                        .addComponent(jcmb_lista_Arch_Camp, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(105, 105, 105)
+                        .addComponent(jbtn_cargar)))
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+        jd_listarCampLayout.setVerticalGroup(
+            jd_listarCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_listarCampLayout.createSequentialGroup()
+                .addGroup(jd_listarCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_listarCampLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jd_listarCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jcmb_lista_Arch_Camp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jd_listarCampLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jbtn_cargar)))
+                .addGap(76, 76, 76)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(135, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jm_archivo.setText("Archivo");
@@ -234,6 +315,11 @@ public class Principal extends javax.swing.JFrame {
         jm_campos.add(jmi_newcampo);
 
         jmi_listarcampo.setText("Listar Campos");
+        jmi_listarcampo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_listarcampoActionPerformed(evt);
+            }
+        });
         jm_campos.add(jmi_listarcampo);
 
         jmi_modcampo.setText("Modificar Campos");
@@ -420,10 +506,55 @@ public class Principal extends javax.swing.JFrame {
         Admin_Campos admin = new Admin_Campos(nombre+".rw");
         admin.Escribir();
         DefaultListModel modelo = new DefaultListModel();
+        DefaultComboBoxModel modelocmb = (DefaultComboBoxModel) jcmb_lista_Arch_Camp.getModel();
+        modelocmb.addElement(nombre);
+        jcmb_lista_Arch_Camp.setModel(modelocmb);
         jm_registros.setEnabled(true);
         jd_crearCamp.setVisible(false);
         
     }//GEN-LAST:event_jbtn_salirCampActionPerformed
+
+    private void jmi_listarcampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_listarcampoActionPerformed
+        // TODO add your handling code here:
+        jd_listarCamp.setModal(true);
+        jd_listarCamp.pack();
+        jd_listarCamp.setLocationRelativeTo(this);
+        jd_listarCamp.setVisible(true);
+    }//GEN-LAST:event_jmi_listarcampoActionPerformed
+
+    private void jbtn_cargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_cargarActionPerformed
+        // TODO add your handling code here:
+        File carpeta = new File(\Proyecto_Estructuras_II\);
+    }//GEN-LAST:event_jbtn_cargarActionPerformed
+
+    private void jcmb_lista_Arch_CampItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcmb_lista_Arch_CampItemStateChanged
+        // TODO add your handling code here:
+        if (evt.getStateChange() == 2) {
+            
+            Admin_Campos adm_camp = new Admin_Campos(jcmb_lista_Arch_Camp.getSelectedItem().toString());
+            adm_camp.Cargar();
+//            for (int i = 0; i < adm_camp.getCampos().size(); i++) {
+//                System.out.println("Campo "+i);
+//                System.out.println(adm_camp.getCampos().toString());
+//            }
+//            for (int i = 0; i <adm_camp.getCampos().size(); i++) {
+//                Campo s = adm_camp.getCampos().get(i);
+//                Object[] newrow = {
+//                    s.getNombre(),
+//                    s.getContenido(),
+//                    s.getLongitud(),
+//                    s.getPri()
+//                };
+//                if (evt.getStateChange() == 2) {
+//                DefaultTableModel modelo = (DefaultTableModel) jtbl_ListarCamp.getModel();
+//                modelo.addRow(newrow);
+//                jtbl_ListarCamp.setModel(modelo);
+//            }
+//            }
+
+            
+        }
+    }//GEN-LAST:event_jcmb_lista_Arch_CampItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -466,13 +597,18 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jbtn_agregarCamp;
+    private javax.swing.JButton jbtn_cargar;
     private javax.swing.JButton jbtn_salirCamp;
+    private javax.swing.JComboBox<String> jcmb_lista_Arch_Camp;
     private javax.swing.JComboBox<String> jcmb_primaria;
     private javax.swing.JComboBox<String> jcmb_tipoCamp;
     private javax.swing.JDialog jd_crearCamp;
+    private javax.swing.JDialog jd_listarCamp;
     private javax.swing.JList<String> jlist_newCamp;
     private javax.swing.JMenu jm_archivo;
     private javax.swing.JMenu jm_campos;
@@ -497,6 +633,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_salir;
     private javax.swing.JMenuItem jmi_salvararch;
     private javax.swing.JPanel jp_Archivo;
+    private javax.swing.JTable jtbl_ListarCamp;
     private javax.swing.JTabbedPane jtp_Principal;
     private javax.swing.JTextField jtxt_longCamp;
     private javax.swing.JTextField jtxt_nombCamp;
