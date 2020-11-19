@@ -1,20 +1,36 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 import java.io.Serializable;
 import java.util.ArrayList;
-
-public class Campo implements Serializable {
+/**
+ *
+ * @author tiffa
+ */
+public class Campo implements Serializable{
     String Nombre;
-    String Contenido;
-    ArrayList <String> contenidos = new ArrayList();
+    String contenido;
+    int longitud;
+    boolean pri = false;
     
     public Campo() {
-  
-    }
-    
-    public Campo(String Nombre, String Contenido) {
-        this.Nombre = Nombre;
-        this.Contenido = Contenido;
     }
 
+    public Campo(String Nombre, String contenido, int longitud) {
+        this.Nombre = Nombre;
+        this.contenido = contenido;
+        this.longitud = longitud;
+        this.pri = pri;
+    }
+    
+    ArrayList <String> contenidos = new ArrayList();
+    public Campo(String Nombre, String Contenido) {
+        this.Nombre = Nombre;
+        this.contenido = Contenido;
+    }
     public ArrayList<String> getContenidos() {
         return contenidos;
     }
@@ -30,11 +46,6 @@ public class Campo implements Serializable {
     public void setContenidoA(String a) {
         contenidos.add(a);
     }
-    
-    
-    public Campo(String Nombre) {
-        this.Nombre = Nombre;
-    }
 
     public String getNombre() {
         return Nombre;
@@ -45,19 +56,38 @@ public class Campo implements Serializable {
     }
 
     public String getContenido() {
-        return Contenido;
+        return contenido;
     }
 
-    public void setContenido(String Contenido) {
-        this.Contenido = Contenido;
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
     }
-    
+
+    public int getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(int longitud) {
+        this.longitud = longitud;
+    }
+
+    public boolean isPri() {
+        return pri;
+    }
+
+    public void setPri(boolean pri) {
+        this.pri = pri;
+    }
+
     @Override
     public String toString() {
-        return "\nNombre: " + Nombre;
-    }   
+        return "Campo{" + "Nombre=" + Nombre + ", contenido=" + contenido + ", longitud=" + longitud + ", pri=" + pri + '}';
+    }
     
-     public int getTamano() {
+    public int getTamano() {
         return getNombre().length()*2 + 1;
     }
+    
+    
+    
 }

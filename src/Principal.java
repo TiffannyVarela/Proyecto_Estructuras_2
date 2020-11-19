@@ -53,14 +53,12 @@ public class Principal extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jtxt_nombCamp = new javax.swing.JTextField();
         jcmb_tipoCamp = new javax.swing.JComboBox<>();
-        jrdb_si = new javax.swing.JRadioButton();
-        jrbd_no = new javax.swing.JRadioButton();
         jtxt_longCamp = new javax.swing.JTextField();
         jbtn_agregarCamp = new javax.swing.JButton();
         jbtn_salirCamp = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jlist_newCamp = new javax.swing.JList<>();
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        jbtn_si = new javax.swing.JButton();
         jtp_Principal = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jm_archivo = new javax.swing.JMenu();
@@ -107,12 +105,6 @@ public class Principal extends javax.swing.JFrame {
 
         jcmb_tipoCamp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Entero", "Caracter", "Cadena Caracteres", "Entero con decimales" }));
 
-        buttonGroup1.add(jrdb_si);
-        jrdb_si.setText("Si");
-
-        buttonGroup1.add(jrbd_no);
-        jrbd_no.setText("No");
-
         jtxt_longCamp.setName("jtxt_longCamp"); // NOI18N
 
         jbtn_agregarCamp.setText("Agregar");
@@ -123,8 +115,15 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jbtn_salirCamp.setText("Salir");
+        jbtn_salirCamp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_salirCampActionPerformed(evt);
+            }
+        });
 
         jScrollPane2.setViewportView(jlist_newCamp);
+
+        jbtn_si.setText("Si");
 
         javax.swing.GroupLayout jd_crearCampLayout = new javax.swing.GroupLayout(jd_crearCamp.getContentPane());
         jd_crearCamp.getContentPane().setLayout(jd_crearCampLayout);
@@ -141,15 +140,11 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGap(76, 76, 76)
                         .addGroup(jd_crearCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jd_crearCampLayout.createSequentialGroup()
-                                .addGroup(jd_crearCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jtxt_longCamp, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jrdb_si, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(68, 68, 68)
-                                .addComponent(jrbd_no))
+                            .addComponent(jtxt_longCamp, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jd_crearCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jtxt_nombCamp)
-                                .addComponent(jcmb_tipoCamp, 0, 272, Short.MAX_VALUE)))))
+                                .addComponent(jcmb_tipoCamp, 0, 272, Short.MAX_VALUE))
+                            .addComponent(jbtn_si))))
                 .addGap(71, 71, 71)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53)
@@ -176,11 +171,9 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jtxt_longCamp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(72, 72, 72)
-                        .addGroup(jd_crearCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_crearCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jrdb_si)
-                                .addComponent(jrbd_no))))
+                        .addGroup(jd_crearCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jbtn_si)))
                     .addGroup(jd_crearCampLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jd_crearCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -390,11 +383,16 @@ public class Principal extends javax.swing.JFrame {
     private void jbtn_agregarCampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_agregarCampActionPerformed
         // TODO add your handling code here:
         try {
+            Campo campo;
             String nombreCamp = jtxt_nombCamp.getText();
             String tipoCamp = jcmb_tipoCamp.getSelectedItem().toString();
             int longitud = Integer.parseInt(jtxt_longCamp.getText());
-            Campo campo=new Campo(nombreCamp);
-            campo.setContenido(tipoCamp);
+            campo = new Campo(nombreCamp,tipoCamp,longitud);
+            if (jbtn_si.isSelected()) {
+                campo.setPri(true);
+                jbtn_si.setEnabled(false);
+            }
+            campos.add(campo);
             DefaultListModel modelo = (DefaultListModel) jlist_newCamp.getModel();
             modelo.addElement(campo);
             jlist_newCamp.setModel(modelo);
@@ -402,6 +400,13 @@ public class Principal extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jbtn_agregarCampActionPerformed
+
+    private void jbtn_salirCampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_salirCampActionPerformed
+        // TODO add your handling code here:
+        AccesoCampo ac;
+        String nombre;
+        
+    }//GEN-LAST:event_jbtn_salirCampActionPerformed
 
     /**
      * @param args the command line arguments
@@ -440,7 +445,6 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -449,6 +453,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jbtn_agregarCamp;
     private javax.swing.JButton jbtn_salirCamp;
+    private javax.swing.JButton jbtn_si;
     private javax.swing.JComboBox<String> jcmb_tipoCamp;
     private javax.swing.JDialog jd_crearCamp;
     private javax.swing.JList<String> jlist_newCamp;
@@ -475,8 +480,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_salir;
     private javax.swing.JMenuItem jmi_salvararch;
     private javax.swing.JPanel jp_Archivo;
-    private javax.swing.JRadioButton jrbd_no;
-    private javax.swing.JRadioButton jrdb_si;
     private javax.swing.JTabbedPane jtp_Principal;
     private javax.swing.JTextField jtxt_longCamp;
     private javax.swing.JTextField jtxt_nombCamp;
