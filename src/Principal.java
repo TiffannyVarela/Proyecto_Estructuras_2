@@ -524,7 +524,15 @@ public class Principal extends javax.swing.JFrame {
 
     private void jbtn_cargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_cargarActionPerformed
         // TODO add your handling code here:
-        File carpeta = new File(\Proyecto_Estructuras_II\);
+        File carpeta = new File("/Proyecto_Estructuras_II/");
+        ArrayList<String> docs = new ArrayList<String>();
+        for (File archivo : carpeta.listFiles()) {
+            docs.add(archivo.getName());
+        }
+        for (int i = 0; i < docs.size(); i++) {
+            System.out.println("Doc "+i);
+            System.out.println(docs.get(i));
+        }
     }//GEN-LAST:event_jbtn_cargarActionPerformed
 
     private void jcmb_lista_Arch_CampItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcmb_lista_Arch_CampItemStateChanged
