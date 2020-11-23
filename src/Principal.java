@@ -17,12 +17,12 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author tiffa
@@ -36,7 +36,7 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
     }
- 
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,10 +63,34 @@ public class Principal extends javax.swing.JFrame {
         jd_listarCamp = new javax.swing.JDialog();
         jLabel5 = new javax.swing.JLabel();
         jcmb_lista_Arch_Camp = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jtbl_ListarCamp = new javax.swing.JTable();
         jbtn_cargar = new javax.swing.JButton();
         jbtn_abrir = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jtbl_ListarCamp = new javax.swing.JTable();
+        jd_elimCampo = new javax.swing.JDialog();
+        jLabel6 = new javax.swing.JLabel();
+        jcmb_lista_Arch_Camp1 = new javax.swing.JComboBox<>();
+        jbtn_cargar1 = new javax.swing.JButton();
+        jbtn_eliminarCamp = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jtbl_ListarCamp1 = new javax.swing.JTable();
+        jbtn_salir_elim_Camp = new javax.swing.JButton();
+        jbtn_abrir1 = new javax.swing.JButton();
+        jd_modCamp = new javax.swing.JDialog();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jtbl_ListarCamp2 = new javax.swing.JTable();
+        jbtn_salir_elim_Camp1 = new javax.swing.JButton();
+        jbtn_abrir2 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jcmb_lista_Arch_Camp2 = new javax.swing.JComboBox<>();
+        jbtn_cargar2 = new javax.swing.JButton();
+        jbtn_eliminarCamp1 = new javax.swing.JButton();
+        jcmb_tipoCamp1 = new javax.swing.JComboBox<>();
+        jtxt_longCamp1 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jtxt_nombCamp1 = new javax.swing.JTextField();
         jtp_Principal = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jm_archivo = new javax.swing.JMenu();
@@ -202,31 +226,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jtbl_ListarCamp.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nombre", "Tipo", "Longitud", "Llave Primaria"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Boolean.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, true, true
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jtbl_ListarCamp);
-
         jbtn_cargar.setText("Cargar");
         jbtn_cargar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,6 +240,31 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jtbl_ListarCamp.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Tipo", "Longitud", "Llave Primaria"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(jtbl_ListarCamp);
+
         javax.swing.GroupLayout jd_listarCampLayout = new javax.swing.GroupLayout(jd_listarCamp.getContentPane());
         jd_listarCamp.getContentPane().setLayout(jd_listarCampLayout);
         jd_listarCampLayout.setHorizontalGroup(
@@ -248,7 +272,6 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jd_listarCampLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jd_listarCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1128, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jd_listarCampLayout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(45, 45, 45)
@@ -256,8 +279,9 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(105, 105, 105)
                         .addComponent(jbtn_cargar)
                         .addGap(64, 64, 64)
-                        .addComponent(jbtn_abrir)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                        .addComponent(jbtn_abrir))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 717, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jd_listarCampLayout.setVerticalGroup(
             jd_listarCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,9 +297,253 @@ public class Principal extends javax.swing.JFrame {
                         .addGroup(jd_listarCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jbtn_cargar)
                             .addComponent(jbtn_abrir))))
-                .addGap(76, 76, 76)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jLabel6.setText("Archivos de Campos");
+
+        jcmb_lista_Arch_Camp1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        jcmb_lista_Arch_Camp1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcmb_lista_Arch_Camp1ItemStateChanged(evt);
+            }
+        });
+
+        jbtn_cargar1.setText("Cargar");
+        jbtn_cargar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_cargar1ActionPerformed(evt);
+            }
+        });
+
+        jbtn_eliminarCamp.setText("Eliminar");
+        jbtn_eliminarCamp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_eliminarCampActionPerformed(evt);
+            }
+        });
+
+        jtbl_ListarCamp1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Tipo", "Longitud", "Llave Primaria"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(jtbl_ListarCamp1);
+
+        jbtn_salir_elim_Camp.setText("Salir");
+        jbtn_salir_elim_Camp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_salir_elim_CampActionPerformed(evt);
+            }
+        });
+
+        jbtn_abrir1.setText("Abrir");
+        jbtn_abrir1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_abrir1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_elimCampoLayout = new javax.swing.GroupLayout(jd_elimCampo.getContentPane());
+        jd_elimCampo.getContentPane().setLayout(jd_elimCampoLayout);
+        jd_elimCampoLayout.setHorizontalGroup(
+            jd_elimCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_elimCampoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jd_elimCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane4)
+                    .addGroup(jd_elimCampoLayout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(45, 45, 45)
+                        .addComponent(jcmb_lista_Arch_Camp1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbtn_cargar1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addComponent(jbtn_abrir1)
+                        .addGap(40, 40, 40)
+                        .addComponent(jbtn_eliminarCamp)
+                        .addGap(39, 39, 39)
+                        .addComponent(jbtn_salir_elim_Camp, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27))
+        );
+        jd_elimCampoLayout.setVerticalGroup(
+            jd_elimCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_elimCampoLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addGroup(jd_elimCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jcmb_lista_Arch_Camp1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jd_elimCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jbtn_cargar1)
+                        .addComponent(jbtn_eliminarCamp)
+                        .addComponent(jbtn_salir_elim_Camp)
+                        .addComponent(jbtn_abrir1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
+        );
+
+        jtbl_ListarCamp2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Tipo", "Longitud", "Llave Primaria"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(jtbl_ListarCamp2);
+
+        jbtn_salir_elim_Camp1.setText("Salir");
+        jbtn_salir_elim_Camp1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_salir_elim_Camp1ActionPerformed(evt);
+            }
+        });
+
+        jbtn_abrir2.setText("Abrir");
+        jbtn_abrir2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_abrir2ActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Archivos de Campos");
+
+        jcmb_lista_Arch_Camp2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        jcmb_lista_Arch_Camp2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcmb_lista_Arch_Camp2ItemStateChanged(evt);
+            }
+        });
+
+        jbtn_cargar2.setText("Cargar");
+        jbtn_cargar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_cargar2ActionPerformed(evt);
+            }
+        });
+
+        jbtn_eliminarCamp1.setText("Eliminar");
+        jbtn_eliminarCamp1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_eliminarCamp1ActionPerformed(evt);
+            }
+        });
+
+        jcmb_tipoCamp1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Entero", "Caracter", "Cadena Caracteres", "Entero con decimales" }));
+
+        jtxt_longCamp1.setName("jtxt_longCamp"); // NOI18N
+
+        jLabel8.setText("Nombre Campo");
+
+        jLabel9.setText("Tipo");
+
+        jLabel10.setText("Logitud");
+
+        javax.swing.GroupLayout jd_modCampLayout = new javax.swing.GroupLayout(jd_modCamp.getContentPane());
+        jd_modCamp.getContentPane().setLayout(jd_modCampLayout);
+        jd_modCampLayout.setHorizontalGroup(
+            jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_modCampLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_modCampLayout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(45, 45, 45)
+                        .addComponent(jcmb_lista_Arch_Camp2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(105, 105, 105)
+                .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_modCampLayout.createSequentialGroup()
+                        .addComponent(jbtn_cargar2)
+                        .addGap(59, 59, 59)
+                        .addComponent(jbtn_abrir2)
+                        .addGap(67, 67, 67)
+                        .addComponent(jbtn_eliminarCamp1)
+                        .addGap(55, 55, 55)
+                        .addComponent(jbtn_salir_elim_Camp1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel10)
+                    .addGroup(jd_modCampLayout.createSequentialGroup()
+                        .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9))
+                        .addGap(76, 76, 76)
+                        .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtxt_longCamp1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jtxt_nombCamp1)
+                                .addComponent(jcmb_tipoCamp1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
+        jd_modCampLayout.setVerticalGroup(
+            jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_modCampLayout.createSequentialGroup()
+                .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_modCampLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jcmb_lista_Arch_Camp2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jd_modCampLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jbtn_cargar2)
+                            .addComponent(jbtn_eliminarCamp1)
+                            .addComponent(jbtn_salir_elim_Camp1)
+                            .addComponent(jbtn_abrir2))))
+                .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_modCampLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_modCampLayout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(jtxt_nombCamp1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(49, 49, 49)
+                        .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(jcmb_tipoCamp1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(52, 52, 52)
+                        .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel10)
+                            .addComponent(jtxt_longCamp1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -338,6 +606,11 @@ public class Principal extends javax.swing.JFrame {
         jm_campos.add(jmi_modcampo);
 
         jmi_borrarcampo.setText("Borrar Campos");
+        jmi_borrarcampo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_borrarcampoActionPerformed(evt);
+            }
+        });
         jm_campos.add(jmi_borrarcampo);
 
         jMenuBar1.add(jm_campos);
@@ -441,7 +714,7 @@ public class Principal extends javax.swing.JFrame {
             cam.escribirCampos(campos, metadata);
             cam.escribirRegistro(registros);
             JOptionPane.showMessageDialog(null, "Se ha guardado exitosamente!");
-            
+
             cam.cerrar();
         } catch (IOException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -454,14 +727,14 @@ public class Principal extends javax.swing.JFrame {
     private void jmi_closearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_closearchActionPerformed
         // TODO add your handling code here:
         archivo = new Archivo();
-        
+
         JPanel p = new JPanel();
-        
+
         jtp_Principal.removeAll();
-        
+
         registros = new ArrayList();
         campos = new ArrayList();
-        
+
         cargado = false;
     }//GEN-LAST:event_jmi_closearchActionPerformed
 
@@ -481,50 +754,65 @@ public class Principal extends javax.swing.JFrame {
     private void jbtn_agregarCampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_agregarCampActionPerformed
         // TODO add your handling code here:
         DefaultListModel modelo = new DefaultListModel();
+        boolean rep = false;
         try {
             Campo campo;
             String nombreCamp = jtxt_nombCamp.getText();
             String tipoCamp = jcmb_tipoCamp.getSelectedItem().toString();
             int longitud = Integer.parseInt(jtxt_longCamp.getText());
-            campo = new Campo(nombreCamp,tipoCamp,longitud);
-            if (jcmb_primaria.getSelectedIndex()==0) {
-                campo.setPri(true);
-                jcmb_primaria.setEnabled(false);
-                jcmb_primaria.setSelectedIndex(1);
-            }
-            else{
-                campo.setPri(false);
-            }
-            campos.add(campo);
-            modelo.removeAllElements();;
-            //DefaultListModel modelo1 = (DefaultListModel) jlist_newCamp.getModel();
             for (int i = 0; i < campos.size(); i++) {
-                modelo.addElement(campos.get(i));
+                if (nombreCamp.equals(campos.get(i).getNombre())) {
+                    JOptionPane.showMessageDialog(null, "Ese nombre ya se uso", "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
+                    jtxt_nombCamp.setText("");
+                    rep = true;
+                }
             }
-            jlist_newCamp.setModel(modelo);
-            
-            jtxt_nombCamp.setText("");
-            jtxt_longCamp.setText("");
-            jcmb_tipoCamp.setSelectedIndex(0);
-            
+            if (!rep) {
+                campo = new Campo(nombreCamp, tipoCamp, longitud);
+                if (jcmb_primaria.getSelectedIndex() == 0) {
+                    campo.setPri(true);
+                    jcmb_primaria.setEnabled(false);
+                    jcmb_primaria.setSelectedIndex(1);
+                } else {
+                    campo.setPri(false);
+                }
+                campos.add(campo);
+                modelo.removeAllElements();
+                //DefaultListModel modelo1 = (DefaultListModel) jlist_newCamp.getModel();
+                for (int i = 0; i < campos.size(); i++) {
+                    modelo.addElement(campos.get(i));
+                }
+                jlist_newCamp.setModel(modelo);
+
+                jtxt_nombCamp.setText("");
+                jtxt_longCamp.setText("");
+                jcmb_tipoCamp.setSelectedIndex(0);
+            } else {
+            }
+
         } catch (Exception e) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, e);
         }
     }//GEN-LAST:event_jbtn_agregarCampActionPerformed
 
     private void jbtn_salirCampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_salirCampActionPerformed
         // TODO add your handling code here:
-        
-        String nombre= JOptionPane.showInputDialog(null,"Nombre",JOptionPane.QUESTION_MESSAGE);
-        Admin_Campos admin = new Admin_Campos(nombre+".rw");
-        admin.setCampos(campos);
-        admin.Escribir();
-        DefaultListModel modelo = new DefaultListModel();
+        try {
+            String nombre = JOptionPane.showInputDialog(null, "Nombre", JOptionPane.QUESTION_MESSAGE);
+            admin = new Admin_Campos(nombre + ".rw");
+            admin.setCampos(campos);
+            admin.Escribir();
+            DefaultListModel modelo = new DefaultListModel();
 //        DefaultComboBoxModel modelocmb = (DefaultComboBoxModel) jcmb_lista_Arch_Camp.getModel();
 //        modelocmb.addElement(nombre);
 //        jcmb_lista_Arch_Camp.setModel(modelocmb);
-        jm_registros.setEnabled(true);
-        jd_crearCamp.setVisible(false);
-        
+            jm_registros.setEnabled(true);
+            jd_crearCamp.setVisible(false);
+        } catch (Exception e) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+
     }//GEN-LAST:event_jbtn_salirCampActionPerformed
 
     private void jmi_listarcampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_listarcampoActionPerformed
@@ -537,73 +825,222 @@ public class Principal extends javax.swing.JFrame {
 
     private void jbtn_cargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_cargarActionPerformed
         // TODO add your handling code here:
-        File carpeta = new File("../Proyecto_Estructuras_II/");
-        ArrayList<String> docs = new ArrayList<String>();
-        for (File archivo : carpeta.listFiles()) {
-            if (archivo.isFile() && (archivo.getName().contains(".rw"))) {
-                docs.add(archivo.getName());
+        try {
+            File carpeta = new File("../Proyecto_Estructuras_II/");
+            ArrayList<String> docs = new ArrayList<String>();
+            for (File archivo : carpeta.listFiles()) {
+                if (archivo.isFile() && (archivo.getName().contains(".rw"))) {
+                    docs.add(archivo.getName());
+                }
             }
+            DefaultComboBoxModel modelocmb = (DefaultComboBoxModel) jcmb_lista_Arch_Camp.getModel();
+            for (int i = 0; i < docs.size(); i++) {
+                modelocmb.addElement(docs.get(i));
+                jcmb_lista_Arch_Camp.setModel(modelocmb);
+            }
+            for (int i = 0; i < docs.size(); i++) {
+                System.out.println("Doc " + i);
+                System.out.println(docs.get(i));
+            }
+        } catch (Exception e) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, e);
         }
-        DefaultComboBoxModel modelocmb = (DefaultComboBoxModel) jcmb_lista_Arch_Camp.getModel();
-        for (int i = 0; i < docs.size(); i++) {
-            modelocmb.addElement(docs.get(i));
-            jcmb_lista_Arch_Camp.setModel(modelocmb);
-        }
-        for (int i = 0; i < docs.size(); i++) {
-            System.out.println("Doc "+i);
-            System.out.println(docs.get(i));
-        }
+
     }//GEN-LAST:event_jbtn_cargarActionPerformed
 
     private void jcmb_lista_Arch_CampItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcmb_lista_Arch_CampItemStateChanged
-        // TODO add your handling code here:
-//        if (evt.getStateChange() == 2) {
-//            
-//            Admin_Campos adm_camp = new Admin_Campos(jcmb_lista_Arch_Camp.getSelectedItem().toString());
-//            adm_camp.Cargar();
-//            for (int i = 0; i < adm_camp.getCampos().size(); i++) {
-//                System.out.println("Campo "+i);
-//                System.out.println(adm_camp.getCampos().toString());
-//            }
-//            for (int i = 0; i <adm_camp.getCampos().size(); i++) {
-//                Campo s = adm_camp.getCampos().get(i);
-//                Object[] newrow = {
-//                    s.getNombre(),
-//                    s.getContenido(),
-//                    s.getLongitud(),
-//                    s.getPri()
-//                };
-//                if (evt.getStateChange() == 2) {
-//                DefaultTableModel modelo = (DefaultTableModel) jtbl_ListarCamp.getModel();
-//                modelo.addRow(newrow);
-//                jtbl_ListarCamp.setModel(modelo);
-//            }
-//            }
 
-            
-//        }
     }//GEN-LAST:event_jcmb_lista_Arch_CampItemStateChanged
 
     private void jbtn_abrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_abrirActionPerformed
         // TODO add your handling code here:
-        String nombre = jcmb_lista_Arch_Camp.getSelectedItem().toString();
-        Admin_Campos admin = new Admin_Campos(nombre);
-        admin.Cargar();
-        for (int i = 0; i < admin.getCampos().size(); i++) {
-                System.out.println("Campo "+i);
-                System.out.println(admin.getCampos().toString());
+        try {
+            String nombre = jcmb_lista_Arch_Camp.getSelectedItem().toString();
+            admin = new Admin_Campos(nombre);
+            admin.Cargar();
+            campos = admin.getCampos();
+            for (int i = 0; i < campos.size(); i++) {
+                System.out.println(campos.toString());
             }
-        DefaultTableModel modelo = new DefaultTableModel();
-        Object o[] = null;
-        for (int i = 0; i < admin.getCampos().size(); i++) {
-            modelo.addRow(o);
-            Campo getCamp = (Campo) admin.getCampos().get(i);
-            modelo.setValueAt(getCamp.getNombre(),i,0);
-            modelo.setValueAt(getCamp.getContenido(),i,1);
-            modelo.setValueAt(getCamp.getLongitud(),i,2);
-            modelo.setValueAt(getCamp.getPri(),i,3);
+            DefaultTableModel modelo = (DefaultTableModel) jtbl_ListarCamp.getModel();
+            for (Campo campo : campos) {
+                Object[] newrow = {
+                    campo.getNombre(),
+                    campo.getContenido(),
+                    campo.getLongitud(),
+                    campo.getPri()
+                };
+                modelo.addRow(newrow);
+            }
+            jtbl_ListarCamp.setModel(modelo);
+        } catch (Exception e) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, e);
         }
+
+
     }//GEN-LAST:event_jbtn_abrirActionPerformed
+
+    private void jcmb_lista_Arch_Camp1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcmb_lista_Arch_Camp1ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcmb_lista_Arch_Camp1ItemStateChanged
+
+    private void jbtn_cargar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_cargar1ActionPerformed
+        // TODO add your handling code here:
+        try {
+            File carpeta = new File("../Proyecto_Estructuras_II/");
+            ArrayList<String> docs = new ArrayList<String>();
+            ArrayList<String> docsTxt = new ArrayList<String>();
+            ArrayList<String> temp = new ArrayList<String>();
+            boolean igual = false;
+            for (File archivo : carpeta.listFiles()) {
+                if (archivo.isFile() && (archivo.getName().contains(".rw"))) {
+                    docs.add(archivo.getName());
+                }
+            }
+//        System.out.println("Docs1");
+//        printArrayList(docs);
+
+            for (File archivo : carpeta.listFiles()) {
+                if (archivo.isFile() && (archivo.getName().contains(".txt"))) {
+                    docsTxt.add(archivo.getName());
+                }
+            }
+//        System.out.println("DocsTxt1");
+//        printArrayList(docsTxt);
+            for (int i = 0; i < docsTxt.size(); i++) {
+                igual = false;
+                for (int j = 0; j < docs.size(); j++) {
+                    if (separar(docs.get(j)).equals(separar(docsTxt.get(i)))) {
+                        igual = true;
+                    }
+                }
+                if (!igual) {
+                    temp.add(docs.get(i));
+                }
+            }
+//        System.out.println("Docs2");
+//        printArrayList(temp);
+            DefaultComboBoxModel modelocmb = (DefaultComboBoxModel) jcmb_lista_Arch_Camp1.getModel();
+            for (int i = 0; i < temp.size(); i++) {
+                modelocmb.addElement(temp.get(i));
+                jcmb_lista_Arch_Camp1.setModel(modelocmb);
+            }
+            for (int i = 0; i < temp.size(); i++) {
+                System.out.println("Doc " + i);
+                System.out.println(temp.get(i));
+            }
+        } catch (Exception e) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+    }//GEN-LAST:event_jbtn_cargar1ActionPerformed
+
+    private void jbtn_eliminarCampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_eliminarCampActionPerformed
+        // TODO add your handling code here:
+        String nombre = jcmb_lista_Arch_Camp.getSelectedItem().toString();
+        Campo c;
+        String name = "";
+        ArrayList<Campo> temp = new ArrayList<Campo>();
+        admin = new Admin_Campos(nombre);
+        try {
+            admin.Cargar();
+            campos = admin.getCampos();
+
+            DefaultTableModel modelo = (DefaultTableModel) jtbl_ListarCamp1.getModel();
+            if (jtbl_ListarCamp1.getSelectedRow() >= 0) {
+                name = String.valueOf(modelo.getValueAt(jtbl_ListarCamp1.getSelectedRow(), 1));
+                modelo.removeRow(jtbl_ListarCamp1.getSelectedRow());
+            }
+
+            for (int i = 0; i < campos.size(); i++) {
+                if ((campos.get(i).getNombre()).equals(name)) {
+                    admin.getCampos().add(c = new Campo("0", "Null"));
+                    campos=admin.getCampos();
+                }
+            }
+            for (int i = 0; i < campos.size(); i++) {
+                if ((campos.get(i).getNombre()).equalsIgnoreCase("0")) {
+
+                } else {
+                    temp.add(campos.get(i));
+                }
+            }
+            admin.setCampos(temp);
+            jtbl_ListarCamp1.setModel(modelo);
+        } catch (Exception e) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+    }//GEN-LAST:event_jbtn_eliminarCampActionPerformed
+
+    private void jbtn_salir_elim_CampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_salir_elim_CampActionPerformed
+        // TODO add your handling code here:
+        try {
+            String nombre = jcmb_lista_Arch_Camp.getSelectedItem().toString();
+            admin = new Admin_Campos(nombre);
+            //admin.setCampos(campos);
+            admin.Escribir();
+        } catch (Exception e) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+    }//GEN-LAST:event_jbtn_salir_elim_CampActionPerformed
+
+    private void jmi_borrarcampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_borrarcampoActionPerformed
+        // TODO add your handling code here:
+        jd_elimCampo.setModal(true);
+        jd_elimCampo.pack();
+        jd_elimCampo.setLocationRelativeTo(this);
+        jd_elimCampo.setVisible(true);
+    }//GEN-LAST:event_jmi_borrarcampoActionPerformed
+
+    private void jbtn_abrir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_abrir1ActionPerformed
+        // TODO add your handling code here:
+        try {
+            String nombre = jcmb_lista_Arch_Camp1.getSelectedItem().toString();
+            admin = new Admin_Campos(nombre);
+            admin.Cargar();
+            campos = admin.getCampos();
+//        for (int i = 0; i < campos.size(); i++) {
+//            System.out.println(campos.toString());
+//        }
+            DefaultTableModel modelo = (DefaultTableModel) jtbl_ListarCamp1.getModel();
+            for (Campo campo : campos) {
+                Object[] newrow = {
+                    campo.getNombre(),
+                    campo.getContenido(),
+                    campo.getLongitud(),
+                    campo.getPri()
+                };
+                modelo.addRow(newrow);
+            }
+            jtbl_ListarCamp1.setModel(modelo);
+        } catch (Exception e) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+
+    }//GEN-LAST:event_jbtn_abrir1ActionPerformed
+
+    private void jbtn_salir_elim_Camp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_salir_elim_Camp1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtn_salir_elim_Camp1ActionPerformed
+
+    private void jbtn_abrir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_abrir2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtn_abrir2ActionPerformed
+
+    private void jcmb_lista_Arch_Camp2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcmb_lista_Arch_Camp2ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcmb_lista_Arch_Camp2ItemStateChanged
+
+    private void jbtn_cargar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_cargar2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtn_cargar2ActionPerformed
+
+    private void jbtn_eliminarCamp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_eliminarCamp1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtn_eliminarCamp1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -635,30 +1072,64 @@ public class Principal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
                 new Principal().setVisible(true);
             }
         });
     }
 
+    public static void printArrayList(ArrayList<String> x) {
+        for (int i = 0; i < x.size(); i++) {
+            System.out.println("Pos " + i + " " + x.get(i));
+        }
+    }
+
+    public static String separar(String x) {
+        String resp = "";
+        String cadena = x.substring(0, x.indexOf("."));
+        System.out.println("CADENA " + cadena);
+        resp = cadena;
+        return resp;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JButton jbtn_abrir;
+    private javax.swing.JButton jbtn_abrir1;
+    private javax.swing.JButton jbtn_abrir2;
     private javax.swing.JButton jbtn_agregarCamp;
     private javax.swing.JButton jbtn_cargar;
+    private javax.swing.JButton jbtn_cargar1;
+    private javax.swing.JButton jbtn_cargar2;
+    private javax.swing.JButton jbtn_eliminarCamp;
+    private javax.swing.JButton jbtn_eliminarCamp1;
     private javax.swing.JButton jbtn_salirCamp;
+    private javax.swing.JButton jbtn_salir_elim_Camp;
+    private javax.swing.JButton jbtn_salir_elim_Camp1;
     private javax.swing.JComboBox<String> jcmb_lista_Arch_Camp;
+    private javax.swing.JComboBox<String> jcmb_lista_Arch_Camp1;
+    private javax.swing.JComboBox<String> jcmb_lista_Arch_Camp2;
     private javax.swing.JComboBox<String> jcmb_primaria;
     private javax.swing.JComboBox<String> jcmb_tipoCamp;
+    private javax.swing.JComboBox<String> jcmb_tipoCamp1;
     private javax.swing.JDialog jd_crearCamp;
+    private javax.swing.JDialog jd_elimCampo;
     private javax.swing.JDialog jd_listarCamp;
+    private javax.swing.JDialog jd_modCamp;
     private javax.swing.JList<String> jlist_newCamp;
     private javax.swing.JMenu jm_archivo;
     private javax.swing.JMenu jm_campos;
@@ -684,9 +1155,13 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_salvararch;
     private javax.swing.JPanel jp_Archivo;
     private javax.swing.JTable jtbl_ListarCamp;
+    private javax.swing.JTable jtbl_ListarCamp1;
+    private javax.swing.JTable jtbl_ListarCamp2;
     private javax.swing.JTabbedPane jtp_Principal;
     private javax.swing.JTextField jtxt_longCamp;
+    private javax.swing.JTextField jtxt_longCamp1;
     private javax.swing.JTextField jtxt_nombCamp;
+    private javax.swing.JTextField jtxt_nombCamp1;
     // End of variables declaration//GEN-END:variables
     ArrayList<Campo> campos = new ArrayList();
     ArrayList<Registro> registros = new ArrayList();
@@ -694,5 +1169,6 @@ public class Principal extends javax.swing.JFrame {
     JPanel p = new JPanel();
     File archivoGuardar = null;
     String metadata = "";
-    Boolean cargado=false;
+    Boolean cargado = false;
+    Admin_Campos admin;
 }

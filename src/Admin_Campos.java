@@ -37,6 +37,10 @@ public class Admin_Campos {
     public void setCampos(ArrayList<Campo> campos) {
         this.campos = campos;
     }
+    
+    public void addCampo(Campo x){
+        this.campos.add(x);
+    }
 
     public File getArchivo() {
         return archivo;
@@ -52,6 +56,30 @@ public class Admin_Campos {
     }
     
     public void Cargar(){
+        try {
+            Campo temp;
+            if (archivo.exists()) {
+                FileInputStream entrada = new FileInputStream(archivo);
+                ObjectInputStream objeto = new ObjectInputStream(entrada);
+                try {
+                    while ((temp = (Campo) objeto.readObject())!=null) {                        
+                        campos.add(temp);
+                    }
+                } catch (Exception e) {
+                }
+                objeto.close();
+                entrada.close();
+            }
+        } catch (Exception e) {
+        }
+        
+        
+        
+        
+        
+        
+        
+        
         FileReader fr = null;
         BufferedReader br = null;
         try {
@@ -72,6 +100,11 @@ public class Admin_Campos {
             e2.printStackTrace();
          }
         }
+        
+        
+        
+        
+        
 //        try {
 //            campos = new ArrayList();
 //            Campo temp;
@@ -91,28 +124,77 @@ public class Admin_Campos {
     }
     
     public void Escribir(){
-        FileWriter fichero = null;
-        PrintWriter pw = null;
-        try
-        {
-            fichero = new FileWriter(archivo);
-            pw = new PrintWriter(fichero);
-
-            for (int i = 0; i < campos.size(); i++)
-                pw.println(campos.get(i));
-
+        try {
+            FileOutputStream fileoutput = new FileOutputStream(archivo);
+            ObjectOutputStream file = new ObjectOutputStream(fileoutput);
+            for (Campo campo : campos) {
+                file.writeObject(campo);
+            }
+            file.close();
         } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-           try {
-           // Nuevamente aprovechamos el finally para 
-           // asegurarnos que se cierra el fichero.
-           if (null != fichero)
-              fichero.close();
-           } catch (Exception e2) {
-              e2.printStackTrace();
-           }
         }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+//        FileWriter fichero = null;
+//        PrintWriter pw = null;
+//        try
+//        {
+//            fichero = new FileWriter(archivo);
+//            pw = new PrintWriter(fichero);
+//
+//            for (int i = 0; i < campos.size(); i++)
+//                pw.println(campos.get(i));
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//           try {
+//           // Nuevamente aprovechamos el finally para 
+//           // asegurarnos que se cierra el fichero.
+//           if (null != fichero)
+//              fichero.close();
+//           } catch (Exception e2) {
+//              e2.printStackTrace();
+//           }
+//        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 //        FileOutputStream fw = null;
 //        ObjectOutputStream bw = null;
 //        try {
