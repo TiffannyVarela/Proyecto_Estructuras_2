@@ -133,7 +133,29 @@ public class Admin_Campos {
             file.close();
         } catch (Exception e) {
         }
+    }
+    
+    public boolean existe (Campo x){
+        for (int i = 0; i<campos.size(); i++) {
+            if (x.getNombre().equals(campos.get(i).getNombre())) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public void borrar(Campo x){
+        campos.remove(x);
+//        ArrayList<Campo> temp = campos;
+//        campos = new ArrayList<>();
+        archivo.delete();
         
+        Escribir();
+    }
+    
+    public void modificar(Campo viejo, Campo nuevo){
+        
+    }
         
         
         
@@ -215,4 +237,4 @@ public class Admin_Campos {
     }
     
     
-}
+
