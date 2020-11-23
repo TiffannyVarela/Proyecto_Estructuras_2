@@ -84,13 +84,14 @@ public class Principal extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jcmb_lista_Arch_Camp2 = new javax.swing.JComboBox<>();
         jbtn_cargar2 = new javax.swing.JButton();
-        jbtn_eliminarCamp1 = new javax.swing.JButton();
+        jbtn_modCamp1 = new javax.swing.JButton();
         jcmb_tipoCamp1 = new javax.swing.JComboBox<>();
         jtxt_longCamp1 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jtxt_nombCamp1 = new javax.swing.JTextField();
+        jbtn_GuardarCamp2 = new javax.swing.JButton();
         jtp_Principal = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jm_archivo = new javax.swing.JMenu();
@@ -458,10 +459,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jbtn_eliminarCamp1.setText("Eliminar");
-        jbtn_eliminarCamp1.addActionListener(new java.awt.event.ActionListener() {
+        jbtn_modCamp1.setText("Modificar");
+        jbtn_modCamp1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtn_eliminarCamp1ActionPerformed(evt);
+                jbtn_modCamp1ActionPerformed(evt);
             }
         });
 
@@ -475,6 +476,13 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel10.setText("Logitud");
 
+        jbtn_GuardarCamp2.setText("Guardar");
+        jbtn_GuardarCamp2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_GuardarCamp2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jd_modCampLayout = new javax.swing.GroupLayout(jd_modCamp.getContentPane());
         jd_modCamp.getContentPane().setLayout(jd_modCampLayout);
         jd_modCampLayout.setHorizontalGroup(
@@ -487,28 +495,33 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(45, 45, 45)
                         .addComponent(jcmb_lista_Arch_Camp2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(105, 105, 105)
                 .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_modCampLayout.createSequentialGroup()
-                        .addComponent(jbtn_cargar2)
-                        .addGap(59, 59, 59)
-                        .addComponent(jbtn_abrir2)
-                        .addGap(67, 67, 67)
-                        .addComponent(jbtn_eliminarCamp1)
-                        .addGap(55, 55, 55)
-                        .addComponent(jbtn_salir_elim_Camp1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel10)
+                        .addGap(105, 105, 105)
+                        .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addGroup(jd_modCampLayout.createSequentialGroup()
+                                .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9))
+                                .addGap(76, 76, 76)
+                                .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtxt_longCamp1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jtxt_nombCamp1)
+                                        .addComponent(jcmb_tipoCamp1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jd_modCampLayout.createSequentialGroup()
-                        .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9))
-                        .addGap(76, 76, 76)
-                        .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtxt_longCamp1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jtxt_nombCamp1)
-                                .addComponent(jcmb_tipoCamp1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(26, Short.MAX_VALUE))
+                        .addGap(53, 53, 53)
+                        .addComponent(jbtn_cargar2)
+                        .addGap(36, 36, 36)
+                        .addComponent(jbtn_abrir2)
+                        .addGap(32, 32, 32)
+                        .addComponent(jbtn_modCamp1)
+                        .addGap(45, 45, 45)
+                        .addComponent(jbtn_GuardarCamp2)
+                        .addGap(46, 46, 46)
+                        .addComponent(jbtn_salir_elim_Camp1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jd_modCampLayout.setVerticalGroup(
             jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -523,9 +536,11 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jbtn_cargar2)
-                            .addComponent(jbtn_eliminarCamp1)
+                            .addComponent(jbtn_modCamp1)
                             .addComponent(jbtn_salir_elim_Camp1)
-                            .addComponent(jbtn_abrir2))))
+                            .addComponent(jbtn_abrir2)
+                            .addComponent(jbtn_GuardarCamp2))))
+                .addGap(49, 49, 49)
                 .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_modCampLayout.createSequentialGroup()
                         .addGap(37, 37, 37)
@@ -543,7 +558,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel10)
                             .addComponent(jtxt_longCamp1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -853,7 +868,32 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jcmb_lista_Arch_CampItemStateChanged
 
     private void jbtn_abrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_abrirActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
+        jtbl_ListarCamp.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Tipo", "Longitud", "Llave Primaria"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        DefaultTableModel modelo = (DefaultTableModel) jtbl_ListarCamp.getModel();
+        
         try {
             String nombre = jcmb_lista_Arch_Camp.getSelectedItem().toString();
             admin = new Admin_Campos(nombre);
@@ -862,7 +902,7 @@ public class Principal extends javax.swing.JFrame {
             for (int i = 0; i < campos.size(); i++) {
                 System.out.println(campos.toString());
             }
-            DefaultTableModel modelo = (DefaultTableModel) jtbl_ListarCamp.getModel();
+            
             for (Campo campo : campos) {
                 Object[] newrow = {
                     campo.getNombre(),
@@ -886,6 +926,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jbtn_cargar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_cargar1ActionPerformed
         // TODO add your handling code here:
+        
         try {
             File carpeta = new File("../Proyecto_Estructuras_II/");
             ArrayList<String> docs = new ArrayList<String>();
@@ -910,7 +951,7 @@ public class Principal extends javax.swing.JFrame {
             for (int i = 0; i < docsTxt.size(); i++) {
                 igual = false;
                 for (int j = 0; j < docs.size(); j++) {
-                    if (separar(docs.get(j)).equals(separar(docsTxt.get(i)))) {
+                    if (separar(docsTxt.get(i)).equals(separar(docs.get(j)))) {
                         igual = true;
                     }
                 }
@@ -918,8 +959,8 @@ public class Principal extends javax.swing.JFrame {
                     temp.add(docs.get(i));
                 }
             }
-//        System.out.println("Docs2");
-//        printArrayList(temp);
+        System.out.println("Docs2");
+        printArrayList(temp);
             DefaultComboBoxModel modelocmb = (DefaultComboBoxModel) jcmb_lista_Arch_Camp1.getModel();
             for (int i = 0; i < temp.size(); i++) {
                 modelocmb.addElement(temp.get(i));
@@ -939,14 +980,14 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         String nombre = jcmb_lista_Arch_Camp.getSelectedItem().toString();
         Campo c;
-        String name = "";
+        String name = "", pos="";
         ArrayList<Campo> temp = new ArrayList<Campo>();
         admin = new Admin_Campos(nombre);
         try {
             admin.Cargar();
             campos = admin.getCampos();
-
             DefaultTableModel modelo = (DefaultTableModel) jtbl_ListarCamp1.getModel();
+            
             if (jtbl_ListarCamp1.getSelectedRow() >= 0) {
                 name = String.valueOf(modelo.getValueAt(jtbl_ListarCamp1.getSelectedRow(), 1));
                 modelo.removeRow(jtbl_ListarCamp1.getSelectedRow());
@@ -959,12 +1000,26 @@ public class Principal extends javax.swing.JFrame {
                 }
             }
             for (int i = 0; i < campos.size(); i++) {
-                if ((campos.get(i).getNombre()).equalsIgnoreCase("0")) {
+                if ((campos.get(i).getNombre()).equals("0")) {
 
                 } else {
                     temp.add(campos.get(i));
                 }
             }
+//            if (jtbl_ListarCamp1.getSelectedRow()>=0) {
+//                int [] rows = jtbl_ListarCamp.getSelectedRows();
+//                DefaultTableModel modelo = (DefaultTableModel) jtbl_ListarCamp1.getModel();
+//                for (int i = 0; i < campos.size(); i++) {
+//                    pos = String.valueOf(modelo.getValueAt(jtbl_ListarCamp.getSelectedRow(), 0));
+//                    name = campos.get(i).getNombre().toString();
+//                    if (pos.equals(name)) {
+//                        modelo.removeRow(rows[i]);
+//                        campos.remove(i);
+//                        jtbl_ListarCamp.setModel(modelo);
+//                    }
+//                }
+//                
+//            }
             admin.setCampos(temp);
             jtbl_ListarCamp1.setModel(modelo);
         } catch (Exception e) {
@@ -996,6 +1051,29 @@ public class Principal extends javax.swing.JFrame {
 
     private void jbtn_abrir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_abrir1ActionPerformed
         // TODO add your handling code here:
+        jtbl_ListarCamp1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Tipo", "Longitud", "Llave Primaria"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         try {
             String nombre = jcmb_lista_Arch_Camp1.getSelectedItem().toString();
             admin = new Admin_Campos(nombre);
@@ -1028,6 +1106,51 @@ public class Principal extends javax.swing.JFrame {
 
     private void jbtn_abrir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_abrir2ActionPerformed
         // TODO add your handling code here:
+        jtbl_ListarCamp2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Tipo", "Longitud", "Llave Primaria"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        try {
+            String nombre = jcmb_lista_Arch_Camp2.getSelectedItem().toString();
+            admin = new Admin_Campos(nombre);
+            admin.Cargar();
+            campos = admin.getCampos();
+//        for (int i = 0; i < campos.size(); i++) {
+//            System.out.println(campos.toString());
+//        }
+            DefaultTableModel modelo = (DefaultTableModel) jtbl_ListarCamp2.getModel();
+            for (Campo campo : campos) {
+                Object[] newrow = {
+                    campo.getNombre(),
+                    campo.getContenido(),
+                    campo.getLongitud(),
+                    campo.getPri()
+                };
+                modelo.addRow(newrow);
+            }
+            jtbl_ListarCamp2.setModel(modelo);
+        } catch (Exception e) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, e);
+        }
     }//GEN-LAST:event_jbtn_abrir2ActionPerformed
 
     private void jcmb_lista_Arch_Camp2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcmb_lista_Arch_Camp2ItemStateChanged
@@ -1036,11 +1159,110 @@ public class Principal extends javax.swing.JFrame {
 
     private void jbtn_cargar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_cargar2ActionPerformed
         // TODO add your handling code here:
+        try {
+            File carpeta = new File("../Proyecto_Estructuras_II/");
+            ArrayList<String> docs = new ArrayList<String>();
+            ArrayList<String> docsTxt = new ArrayList<String>();
+            ArrayList<String> temp = new ArrayList<String>();
+            boolean igual = false;
+            for (File archivo : carpeta.listFiles()) {
+                if (archivo.isFile() && (archivo.getName().contains(".rw"))) {
+                    docs.add(archivo.getName());
+                }
+            }
+//        System.out.println("Docs1");
+//        printArrayList(docs);
+
+            for (File archivo : carpeta.listFiles()) {
+                if (archivo.isFile() && (archivo.getName().contains(".txt"))) {
+                    docsTxt.add(archivo.getName());
+                }
+            }
+//        System.out.println("DocsTxt1");
+//        printArrayList(docsTxt);
+            for (int i = 0; i < docsTxt.size(); i++) {
+                igual = false;
+                for (int j = 0; j < docs.size(); j++) {
+                    if (separar(docsTxt.get(i)).equals(separar(docs.get(j)))) {
+                        igual = true;
+                    }
+                }
+                if (!igual) {
+                    temp.add(docs.get(i));
+                }
+            }
+//        System.out.println("Docs2");
+//        printArrayList(temp);
+            DefaultComboBoxModel modelocmb = (DefaultComboBoxModel) jcmb_lista_Arch_Camp2.getModel();
+            for (int i = 0; i < temp.size(); i++) {
+                modelocmb.addElement(temp.get(i));
+                jcmb_lista_Arch_Camp2.setModel(modelocmb);
+            }
+            for (int i = 0; i < temp.size(); i++) {
+                System.out.println("Doc " + i);
+                System.out.println(temp.get(i));
+            }
+        } catch (Exception e) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, e);
+        }
     }//GEN-LAST:event_jbtn_cargar2ActionPerformed
 
-    private void jbtn_eliminarCamp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_eliminarCamp1ActionPerformed
+    private void jbtn_modCamp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_modCamp1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jbtn_eliminarCamp1ActionPerformed
+        String nombre = jcmb_lista_Arch_Camp2.getSelectedItem().toString();
+        Campo c;
+        String name = "", pos="", tipo="", longi="";
+        ArrayList<Campo> temp = new ArrayList<Campo>();
+        admin = new Admin_Campos(nombre);
+        try {
+            admin.Cargar();
+            campos = admin.getCampos();
+            DefaultTableModel modelo = (DefaultTableModel) jtbl_ListarCamp2.getModel();
+            
+            if (jtbl_ListarCamp2.getSelectedRow() >= 0) {
+                name = String.valueOf(modelo.getValueAt(jtbl_ListarCamp2.getSelectedRow(), 0));
+//                name = String.valueOf(modelo.getValueAt(jtbl_ListarCamp2.getSelectedRow(), 0));
+//                name = String.valueOf(modelo.getValueAt(jtbl_ListarCamp2.getSelectedRow(), 0));
+                modelo.removeRow(jtbl_ListarCamp2.getSelectedRow());
+            }
+
+            for (int i = 0; i < campos.size(); i++) {
+                if ((campos.get(i).getNombre()).equals(name)) {
+                    admin.getCampos().add(c = new Campo("0", "Null"));
+                    campos=admin.getCampos();
+                }
+            }
+            for (int i = 0; i < campos.size(); i++) {
+                if ((campos.get(i).getNombre()).equals("0")) {
+
+                } else {
+                    temp.add(campos.get(i));
+                }
+            }
+//            if (jtbl_ListarCamp1.getSelectedRow()>=0) {
+//                int [] rows = jtbl_ListarCamp.getSelectedRows();
+//                DefaultTableModel modelo = (DefaultTableModel) jtbl_ListarCamp1.getModel();
+//                for (int i = 0; i < campos.size(); i++) {
+//                    pos = String.valueOf(modelo.getValueAt(jtbl_ListarCamp.getSelectedRow(), 0));
+//                    name = campos.get(i).getNombre().toString();
+//                    if (pos.equals(name)) {
+//                        modelo.removeRow(rows[i]);
+//                        campos.remove(i);
+//                        jtbl_ListarCamp.setModel(modelo);
+//                    }
+//                }
+//                
+//            }
+            admin.setCampos(temp);
+            jtbl_ListarCamp2.setModel(modelo);
+        } catch (Exception e) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_jbtn_modCamp1ActionPerformed
+
+    private void jbtn_GuardarCamp2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_GuardarCamp2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtn_GuardarCamp2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1108,6 +1330,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JButton jbtn_GuardarCamp2;
     private javax.swing.JButton jbtn_abrir;
     private javax.swing.JButton jbtn_abrir1;
     private javax.swing.JButton jbtn_abrir2;
@@ -1116,7 +1339,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jbtn_cargar1;
     private javax.swing.JButton jbtn_cargar2;
     private javax.swing.JButton jbtn_eliminarCamp;
-    private javax.swing.JButton jbtn_eliminarCamp1;
+    private javax.swing.JButton jbtn_modCamp1;
     private javax.swing.JButton jbtn_salirCamp;
     private javax.swing.JButton jbtn_salir_elim_Camp;
     private javax.swing.JButton jbtn_salir_elim_Camp1;
