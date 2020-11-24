@@ -79,7 +79,7 @@ public class Principal extends javax.swing.JFrame {
         jd_modCamp = new javax.swing.JDialog();
         jScrollPane6 = new javax.swing.JScrollPane();
         jtbl_ListarCamp2 = new javax.swing.JTable();
-        jbtn_salir_elim_Camp1 = new javax.swing.JButton();
+        jbtn_salir_mod_Camp = new javax.swing.JButton();
         jbtn_abrir2 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jcmb_lista_Arch_Camp2 = new javax.swing.JComboBox<>();
@@ -430,10 +430,10 @@ public class Principal extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(jtbl_ListarCamp2);
 
-        jbtn_salir_elim_Camp1.setText("Salir");
-        jbtn_salir_elim_Camp1.addActionListener(new java.awt.event.ActionListener() {
+        jbtn_salir_mod_Camp.setText("Salir");
+        jbtn_salir_mod_Camp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtn_salir_elim_Camp1ActionPerformed(evt);
+                jbtn_salir_mod_CampActionPerformed(evt);
             }
         });
 
@@ -521,7 +521,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(45, 45, 45)
                         .addComponent(jbtn_GuardarCamp2)
                         .addGap(46, 46, 46)
-                        .addComponent(jbtn_salir_elim_Camp1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jbtn_salir_mod_Camp, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         jd_modCampLayout.setVerticalGroup(
@@ -538,7 +538,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jbtn_cargar2)
                             .addComponent(jbtn_modCamp1)
-                            .addComponent(jbtn_salir_elim_Camp1)
+                            .addComponent(jbtn_salir_mod_Camp)
                             .addComponent(jbtn_abrir2)
                             .addComponent(jbtn_GuardarCamp2))))
                 .addGap(49, 49, 49)
@@ -1019,6 +1019,7 @@ public class Principal extends javax.swing.JFrame {
         String name1 = "", pos = "";
         admin = new Admin_Campos(nombre);
         name=nombre;
+        int[] rows = jtbl_ListarCamp1.getSelectedRows();
         try {
             admin.Cargar();
             campos = admin.getCampos();
@@ -1028,11 +1029,13 @@ public class Principal extends javax.swing.JFrame {
                 name1 = String.valueOf(modelo.getValueAt(jtbl_ListarCamp1.getSelectedRow(), 0));
                 for (int i = 0; i < campos.size(); i++) {
                 if (campos.get(i).getNombre().equals(name1)) {
-                    admin.borrar(i);
+                    //modelo.removeRow(jtbl_ListarCamp1.getSelectedRow());
+                    modelo.removeRow(rows[i]);
+                    admin.getCampos().remove(i);
+                    jtbl_ListarCamp1.setModel(modelo);
                     break;
                 }
             }
-                modelo.removeRow(jtbl_ListarCamp1.getSelectedRow());
             }
 
             
@@ -1060,7 +1063,7 @@ public class Principal extends javax.swing.JFrame {
 //                }
 //                
 //            }
-            jtbl_ListarCamp1.setModel(modelo);
+            //jtbl_ListarCamp1.setModel(modelo);
         } catch (Exception e) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -1181,12 +1184,40 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jbtn_abrir1ActionPerformed
 
-    private void jbtn_salir_elim_Camp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_salir_elim_Camp1ActionPerformed
+    private void jbtn_salir_mod_CampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_salir_mod_CampActionPerformed
         // TODO add your handling code here:
-        admin = new Admin_Campos(name);
-        admin.Escribir();
-        jmi_modcampo.setVisible(false);
-    }//GEN-LAST:event_jbtn_salir_elim_Camp1ActionPerformed
+        try {
+            jtbl_ListarCamp2.setModel(new javax.swing.table.DefaultTableModel(
+                    new Object[][]{},
+                    new String[]{
+                        "Nombre", "Tipo", "Longitud", "Llave Primaria"
+                    }
+            ) {
+                Class[] types = new Class[]{
+                    java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+                };
+                boolean[] canEdit = new boolean[]{
+                    false, false, true, true
+                };
+
+                public Class getColumnClass(int columnIndex) {
+                    return types[columnIndex];
+                }
+
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            });
+            String nombre = jcmb_lista_Arch_Camp2.getSelectedItem().toString();
+            admin = new Admin_Campos(nombre);
+            //admin.setCampos(campos);
+            admin.Escribir();
+
+            jd_modCamp.setVisible(false);
+        } catch (Exception e) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_jbtn_salir_mod_CampActionPerformed
 
     private void jbtn_abrir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_abrir2ActionPerformed
         // TODO add your handling code here:
@@ -1313,7 +1344,6 @@ public class Principal extends javax.swing.JFrame {
                 modelo.removeRow(jtbl_ListarCamp2.getSelectedRow());
 
             }
-            System.out.println("Tipo "+tipo);
             jtxt_nombCamp1.setText(name);
             if ("Entero".equals(tipo)) {
                 jcmb_tipoCamp1.setSelectedIndex(0);
@@ -1333,10 +1363,9 @@ public class Principal extends javax.swing.JFrame {
             }
 
             for (int i = 0; i < campos.size(); i++) {
-                if ((campos.get(i).getNombre()).equals("0")) {
-
-                } else {
-                    temp.add(campos.get(i));
+                if ("0".equals((campos.get(i).getNombre()))) {
+                    admin.getCampos().remove(i);
+                    campos=admin.getCampos();
                 }
             }
 
@@ -1354,7 +1383,7 @@ public class Principal extends javax.swing.JFrame {
 //                }
 //                
 //            }
-            admin.setCampos(temp);
+            admin.setCampos(campos);
             jtbl_ListarCamp2.setModel(modelo);
         } catch (Exception e) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, e);
@@ -1387,13 +1416,13 @@ public class Principal extends javax.swing.JFrame {
         try {
             Campo campo;
             boolean pri = false;
-            String nombreCamp = jtxt_nombCamp.getText();
-            String tipoCamp = jcmb_tipoCamp.getSelectedItem().toString();
-            int longitud = Integer.parseInt(jtxt_longCamp.getText());
+            String nombreCamp = jtxt_nombCamp1.getText();
+            String tipoCamp = jcmb_tipoCamp1.getSelectedItem().toString();
+            int longitud = Integer.parseInt(jtxt_longCamp1.getText());
             for (int i = 0; i < campos.size(); i++) {
                 if (nombreCamp.equals(campos.get(i).getNombre())) {
                     JOptionPane.showMessageDialog(null, "Ese nombre ya se uso", "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
-                    jtxt_nombCamp.setText("");
+                    jtxt_nombCamp1.setText("");
                 }
             }
             if (tempo.equals("true")) {
@@ -1401,9 +1430,11 @@ public class Principal extends javax.swing.JFrame {
             } else {
                 pri = false;
             }
-            campo = new Campo(nombreCamp, tipoCamp, longitud);
+            campo = new Campo(nombreCamp, tipoCamp, longitud);            
             campos.add(campo);
+            campos.get(campos.size()-1).setPri(pri);
             DefaultTableModel modelo = (DefaultTableModel) jtbl_ListarCamp2.getModel();
+            jtbl_ListarCamp2.setModel(modelo);
             for (Campo campo1 : campos) {
                 Object[] newrow = {
                     campo1.getNombre(),
@@ -1415,9 +1446,9 @@ public class Principal extends javax.swing.JFrame {
             }
             jtbl_ListarCamp2.setModel(modelo);
 
-            jtxt_nombCamp.setText("");
-            jtxt_longCamp.setText("");
-            jcmb_tipoCamp.setSelectedIndex(0);
+            jtxt_nombCamp1.setText("");
+            jtxt_longCamp1.setText("");
+            jcmb_tipoCamp1.setSelectedIndex(0);
 
         } catch (Exception e) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, e);
@@ -1519,7 +1550,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jbtn_modCamp1;
     private javax.swing.JButton jbtn_salirCamp;
     private javax.swing.JButton jbtn_salir_elim_Camp;
-    private javax.swing.JButton jbtn_salir_elim_Camp1;
+    private javax.swing.JButton jbtn_salir_mod_Camp;
     private javax.swing.JComboBox<String> jcmb_lista_Arch_Camp;
     private javax.swing.JComboBox<String> jcmb_lista_Arch_Camp1;
     private javax.swing.JComboBox<String> jcmb_lista_Arch_Camp2;

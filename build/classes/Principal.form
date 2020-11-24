@@ -525,7 +525,7 @@
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                           <Component id="jbtn_GuardarCamp2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                          <Component id="jbtn_salir_elim_Camp1" min="-2" pref="68" max="-2" attributes="0"/>
+                          <Component id="jbtn_salir_mod_Camp" min="-2" pref="68" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="18" max="32767" attributes="0"/>
@@ -548,7 +548,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jbtn_cargar2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jbtn_modCamp1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jbtn_salir_elim_Camp1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jbtn_salir_mod_Camp" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jbtn_abrir2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jbtn_GuardarCamp2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -632,12 +632,12 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="jbtn_salir_elim_Camp1">
+        <Component class="javax.swing.JButton" name="jbtn_salir_mod_Camp">
           <Properties>
             <Property name="text" type="java.lang.String" value="Salir"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtn_salir_elim_Camp1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtn_salir_mod_CampActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jbtn_abrir2">
