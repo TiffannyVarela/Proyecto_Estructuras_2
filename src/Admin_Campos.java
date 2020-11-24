@@ -15,16 +15,18 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+
 /**
  *
  * @author tiffa
  */
 public class Admin_Campos {
-    private ArrayList<Campo> campos = new ArrayList();
-    private File archivo = null;
-    
-    private Campo camp;
 
+    private ArrayList<Campo> campos = new ArrayList();
+    private ArrayList<Campo> temp = new ArrayList();
+    private File archivo = null;
+
+    private Campo camp;
 
     public Admin_Campos(String path) {
         archivo = new File(path);
@@ -37,8 +39,8 @@ public class Admin_Campos {
     public void setCampos(ArrayList<Campo> campos) {
         this.campos = campos;
     }
-    
-    public void addCampo(Campo x){
+
+    public void addCampo(Campo x) {
         this.campos.add(x);
     }
 
@@ -50,61 +52,58 @@ public class Admin_Campos {
         this.archivo = archivo;
     }
 
+    public ArrayList<Campo> getTemp() {
+        return temp;
+    }
+
+    public void setTemp(ArrayList<Campo> temp) {
+        this.temp = temp;
+    }
+
     @Override
     public String toString() {
         return "Write_Campos{" + "campos=" + campos + ", archivo=" + archivo + '}';
     }
-    
-    public void Cargar(){
+
+    public void Cargar() {
         try {
             Campo temp;
-            if (archivo.exists()) {
-                FileInputStream entrada = new FileInputStream(archivo);
-                ObjectInputStream objeto = new ObjectInputStream(entrada);
-                try {
-                    while ((temp = (Campo) objeto.readObject())!=null) {                        
-                        campos.add(temp);
-                    }
-                } catch (Exception e) {
+            // if (archivo.exists()) {
+            FileInputStream entrada = new FileInputStream("./Creados/" + archivo);
+            ObjectInputStream objeto = new ObjectInputStream(entrada);
+            try {
+                while ((temp = (Campo) objeto.readObject()) != null) {
+                    campos.add(temp);
                 }
-                objeto.close();
-                entrada.close();
+            } catch (Exception e) {
             }
+            objeto.close();
+            entrada.close();
+            //}
         } catch (Exception e) {
         }
-        
-        
-        
-        
-        
-        
-        
-        
+
         FileReader fr = null;
         BufferedReader br = null;
         try {
-            fr = new FileReader(archivo);
+            fr = new FileReader("./Creados/" + archivo);
             br = new BufferedReader(fr);
             String linea;
-            while ((linea=br.readLine())!=null) {
+            while ((linea = br.readLine()) != null) {
                 System.out.println(linea);
             }
         } catch (Exception e) {
-        e.printStackTrace();
-      }finally{
-         try{                    
-            if( null != fr ){   
-               fr.close();     
-            }                  
-         }catch (Exception e2){ 
-            e2.printStackTrace();
-         }
+            e.printStackTrace();
+        } finally {
+            try {
+                if (null != fr) {
+                    fr.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
         }
-        
-        
-        
-        
-        
+
 //        try {
 //            campos = new ArrayList();
 //            Campo temp;
@@ -122,10 +121,10 @@ public class Admin_Campos {
 //        } catch (Exception e) {
 //        }
     }
-    
-    public void Escribir(){
+
+    public void Escribir() {
         try {
-            FileOutputStream fileoutput = new FileOutputStream(archivo);
+            FileOutputStream fileoutput = new FileOutputStream("./Creados/" + archivo);
             ObjectOutputStream file = new ObjectOutputStream(fileoutput);
             for (Campo campo : campos) {
                 file.writeObject(campo);
@@ -134,49 +133,27 @@ public class Admin_Campos {
         } catch (Exception e) {
         }
     }
-    
-    public boolean existe (Campo x){
-        for (int i = 0; i<campos.size(); i++) {
+
+    public boolean existe(Campo x) {
+        for (int i = 0; i < campos.size(); i++) {
             if (x.getNombre().equals(campos.get(i).getNombre())) {
                 return true;
             }
         }
         return false;
     }
-    
-    public void borrar(Campo x){
+
+    public void borrar(int x) {
         campos.remove(x);
-//        ArrayList<Campo> temp = campos;
-//        campos = new ArrayList<>();
-        archivo.delete();
-        
-        Escribir();
+            archivo.delete();
+            Escribir();
+
     }
-    
-    public void modificar(Campo viejo, Campo nuevo){
-        
+
+    public void modificar(Campo viejo, Campo nuevo) {
+
     }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
 //        FileWriter fichero = null;
 //        PrintWriter pw = null;
 //        try
@@ -199,24 +176,6 @@ public class Admin_Campos {
 //              e2.printStackTrace();
 //           }
 //        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
 //        FileOutputStream fw = null;
 //        ObjectOutputStream bw = null;
 //        try {
@@ -234,7 +193,4 @@ public class Admin_Campos {
 //            } catch (Exception e) {
 //            }
 //        }
-    }
-    
-    
-
+}
