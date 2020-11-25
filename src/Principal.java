@@ -774,8 +774,12 @@ public class Principal extends javax.swing.JFrame {
             String tipoCamp = jcmb_tipoCamp.getSelectedItem().toString();
             String longi = jtxt_longCamp.getText();
             int longitud = 0;
-                jtxt_nombCamp.setText("");
-
+            jtxt_nombCamp.setText("");
+            if (cont==0) {
+                campos.clear();
+                cont++;
+            }
+                
             for (int i = 0; i < campos.size(); i++) {
                 if (nombreCamp.equals(campos.get(i).getNombre())) {
                     JOptionPane.showMessageDialog(null, "Ese nombre ya se uso", "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
@@ -1637,4 +1641,5 @@ public class Principal extends javax.swing.JFrame {
     String tempo = "";
     String name = "";
     String nombreArch="";
+    int cont=0;
 }
