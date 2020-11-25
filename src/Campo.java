@@ -17,6 +17,9 @@ public class Campo implements Serializable{
     boolean pri = false;
     
     public Campo() {
+        this.Nombre = "";
+        this.contenido = "Entero";
+        this.longitud = 0;
         pri = false;
     }
 

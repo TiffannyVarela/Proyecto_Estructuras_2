@@ -36,8 +36,8 @@ public class Admin_Campos {
         return campos;
     }
 
-    public void setCampos(ArrayList<Campo> campos) {
-        this.campos = campos;
+    public void setCampos(ArrayList<Campo> x) {
+        this.campos = x;
     }
 
     public void addCampo(Campo x) {

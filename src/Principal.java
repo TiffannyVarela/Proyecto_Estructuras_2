@@ -430,7 +430,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(jtbl_ListarCamp2);
 
-        jbtn_salir_mod_Camp.setText("Salir");
+        jbtn_salir_mod_Camp.setText("Guardar Arch.");
         jbtn_salir_mod_Camp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtn_salir_mod_CampActionPerformed(evt);
@@ -477,7 +477,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel10.setText("Logitud");
 
-        jbtn_GuardarCamp2.setText("Guardar");
+        jbtn_GuardarCamp2.setText("Guardar Campo");
         jbtn_GuardarCamp2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtn_GuardarCamp2ActionPerformed(evt);
@@ -496,33 +496,33 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(45, 45, 45)
                         .addComponent(jcmb_lista_Arch_Camp2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(22, 22, 22)
+                .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel10)
+                        .addGroup(jd_modCampLayout.createSequentialGroup()
+                            .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel8)
+                                .addComponent(jLabel9))
+                            .addGap(76, 76, 76)
+                            .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jtxt_longCamp1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jtxt_nombCamp1)
+                                    .addComponent(jcmb_tipoCamp1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jd_modCampLayout.createSequentialGroup()
-                        .addGap(105, 105, 105)
                         .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
+                            .addComponent(jbtn_salir_mod_Camp, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jd_modCampLayout.createSequentialGroup()
                                 .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9))
-                                .addGap(76, 76, 76)
+                                    .addComponent(jbtn_cargar2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jbtn_modCamp1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(36, 36, 36)
                                 .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtxt_longCamp1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jtxt_nombCamp1)
-                                        .addComponent(jcmb_tipoCamp1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(jd_modCampLayout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jbtn_cargar2)
-                        .addGap(36, 36, 36)
-                        .addComponent(jbtn_abrir2)
-                        .addGap(32, 32, 32)
-                        .addComponent(jbtn_modCamp1)
-                        .addGap(45, 45, 45)
-                        .addComponent(jbtn_GuardarCamp2)
-                        .addGap(46, 46, 46)
-                        .addComponent(jbtn_salir_mod_Camp, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                                    .addComponent(jbtn_GuardarCamp2)
+                                    .addComponent(jbtn_abrir2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(134, 134, 134)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jd_modCampLayout.setVerticalGroup(
             jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -532,22 +532,21 @@ public class Principal extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(jcmb_lista_Arch_Camp2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jcmb_lista_Arch_Camp2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(48, 48, 48)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jd_modCampLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jbtn_cargar2)
+                            .addComponent(jbtn_abrir2))
+                        .addGap(18, 18, 18)
+                        .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jbtn_modCamp1)
-                            .addComponent(jbtn_salir_mod_Camp)
-                            .addComponent(jbtn_abrir2)
-                            .addComponent(jbtn_GuardarCamp2))))
-                .addGap(49, 49, 49)
-                .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jd_modCampLayout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jd_modCampLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
+                            .addComponent(jbtn_GuardarCamp2))
+                        .addGap(18, 18, 18)
+                        .addComponent(jbtn_salir_mod_Camp)
+                        .addGap(46, 46, 46)
                         .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(jtxt_nombCamp1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -559,7 +558,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGroup(jd_modCampLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel10)
                             .addComponent(jtxt_longCamp1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -777,7 +776,6 @@ public class Principal extends javax.swing.JFrame {
     private void jbtn_agregarCampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_agregarCampActionPerformed
         // TODO add your handling code here:
         DefaultListModel modelo = new DefaultListModel();
-        
         boolean rep = false;
         try {
             Campo campo;
@@ -834,8 +832,8 @@ public class Principal extends javax.swing.JFrame {
     private void jbtn_salirCampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_salirCampActionPerformed
         // TODO add your handling code here:
         try {
-            String nombre = JOptionPane.showInputDialog(null, "Nombre", JOptionPane.QUESTION_MESSAGE);
-            admin = new Admin_Campos(nombre + ".rw");
+            nombreArch = JOptionPane.showInputDialog(null, "Nombre", JOptionPane.QUESTION_MESSAGE);
+            admin = new Admin_Campos(nombreArch + ".rw");
             admin.setCampos(campos);
             admin.Escribir();
             DefaultListModel modelo = new DefaultListModel();
@@ -921,8 +919,8 @@ public class Principal extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) jtbl_ListarCamp.getModel();
 
         try {
-            String nombre = jcmb_lista_Arch_Camp.getSelectedItem().toString();
-            admin = new Admin_Campos(nombre);
+            nombreArch = jcmb_lista_Arch_Camp.getSelectedItem().toString();
+            admin = new Admin_Campos(nombreArch);
             admin.Cargar();
             campos = admin.getCampos();
             for (int i = 0; i < campos.size(); i++) {
@@ -1013,12 +1011,13 @@ public class Principal extends javax.swing.JFrame {
 
     private void jbtn_eliminarCampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_eliminarCampActionPerformed
         // TODO add your handling code here:
-        name = "";
-        String nombre = jcmb_lista_Arch_Camp.getSelectedItem().toString();
+        nombreArch = jcmb_lista_Arch_Camp.getSelectedItem().toString();
         Campo c;
-        String name1 = "", pos = "";
-        admin = new Admin_Campos(nombre);
-        name=nombre;
+        int longi2=0;
+        boolean pr;
+        String name = "", pos = "", tipo = "", longi = "", name1="";
+        ArrayList<Campo> temp = new ArrayList<Campo>();
+        admin = new Admin_Campos(nombreArch);
         int[] rows = jtbl_ListarCamp1.getSelectedRows();
         try {
             admin.Cargar();
@@ -1026,44 +1025,40 @@ public class Principal extends javax.swing.JFrame {
             DefaultTableModel modelo = (DefaultTableModel) jtbl_ListarCamp1.getModel();
 
             if (jtbl_ListarCamp1.getSelectedRow() >= 0) {
-                name1 = String.valueOf(modelo.getValueAt(jtbl_ListarCamp1.getSelectedRow(), 0));
+                name = String.valueOf(modelo.getValueAt(jtbl_ListarCamp1.getSelectedRow(), 0));
                 for (int i = 0; i < campos.size(); i++) {
-                if (campos.get(i).getNombre().equals(name1)) {
+                if (campos.get(i).getNombre().equals(name)) {
                     //modelo.removeRow(jtbl_ListarCamp1.getSelectedRow());
                     modelo.removeRow(rows[i]);
-                    admin.getCampos().remove(i);
                     jtbl_ListarCamp1.setModel(modelo);
-                    break;
                 }
             }
             }
-
             
-            for (int i = 0; i < campos.size(); i++) {
-                System.out.println(i + " " + campos.get(i).toString());
+            for (int i = 0; i < jtbl_ListarCamp1.getRowCount(); i++) {
+                name1 = String.valueOf(modelo.getValueAt(i, 0));
+                tipo = String.valueOf(modelo.getValueAt(i, 1));
+                longi = String.valueOf(modelo.getValueAt(i, 2));
+                longi2 = Integer.parseInt(longi);
+                tempo = String.valueOf(modelo.getValueAt(i, 3));
+                if ("true".equals(tempo)) {
+                    pr=true;
+                } else {
+                    pr=false;
+                }
+                c = new Campo(name1, tipo, longi2);
+                c.setPri(pr);
+                temp.add(c);
             }
-//            for (int i = 0; i < campos.size(); i++) {
-//                if ((campos.get(i).getNombre()).equals("0")) {
-//
-//                } else {
-//                    temp.add(campos.get(i));
-//                }
-//            }
-//            if (jtbl_ListarCamp1.getSelectedRow()>=0) {
-//                int [] rows = jtbl_ListarCamp.getSelectedRows();
-//                DefaultTableModel modelo = (DefaultTableModel) jtbl_ListarCamp1.getModel();
-//                for (int i = 0; i < campos.size(); i++) {
-//                    pos = String.valueOf(modelo.getValueAt(jtbl_ListarCamp.getSelectedRow(), 0));
-//                    name = campos.get(i).getNombre().toString();
-//                    if (pos.equals(name)) {
-//                        modelo.removeRow(rows[i]);
-//                        campos.remove(i);
-//                        jtbl_ListarCamp.setModel(modelo);
-//                    }
-//                }
-//                
-//            }
-            //jtbl_ListarCamp1.setModel(modelo);
+
+            System.out.println("TEMP");
+            for (int i = 0; i < temp.size(); i++) {
+                System.out.println(temp.get(i).toString());
+            }
+            
+            admin.setCampos(temp);
+            campos=admin.getCampos();
+            jtbl_ListarCamp1.setModel(modelo);
         } catch (Exception e) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -1073,7 +1068,7 @@ public class Principal extends javax.swing.JFrame {
     private void jbtn_salir_elim_CampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_salir_elim_CampActionPerformed
         // TODO add your handling code here:
         try {
-            jtbl_ListarCamp.setModel(new javax.swing.table.DefaultTableModel(
+            jtbl_ListarCamp1.setModel(new javax.swing.table.DefaultTableModel(
                     new Object[][]{},
                     new String[]{
                         "Nombre", "Tipo", "Longitud", "Llave Primaria"
@@ -1094,11 +1089,10 @@ public class Principal extends javax.swing.JFrame {
                     return canEdit[columnIndex];
                 }
             });
-            String nombre = jcmb_lista_Arch_Camp.getSelectedItem().toString();
-            admin = new Admin_Campos(nombre);
-            //admin.setCampos(campos);
+            nombreArch = jcmb_lista_Arch_Camp1.getSelectedItem().toString();
+            admin = new Admin_Campos(nombreArch);
+            admin.setCampos(campos);
             admin.Escribir();
-
             jd_elimCampo.setVisible(false);
         } catch (Exception e) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, e);
@@ -1159,8 +1153,8 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         try {
-            String nombre = jcmb_lista_Arch_Camp1.getSelectedItem().toString();
-            admin = new Admin_Campos(nombre);
+            nombreArch = jcmb_lista_Arch_Camp1.getSelectedItem().toString();
+            admin = new Admin_Campos(nombreArch);
             admin.Cargar();
             campos = admin.getCampos();
 //        for (int i = 0; i < campos.size(); i++) {
@@ -1208,9 +1202,11 @@ public class Principal extends javax.swing.JFrame {
                     return canEdit[columnIndex];
                 }
             });
-            String nombre = jcmb_lista_Arch_Camp2.getSelectedItem().toString();
-            admin = new Admin_Campos(nombre);
-            //admin.setCampos(campos);
+            nombreArch = jcmb_lista_Arch_Camp2.getSelectedItem().toString();
+            admin = new Admin_Campos(nombreArch);
+            
+            //admin.getArchivo().delete();
+            admin.setCampos(campos);
             admin.Escribir();
 
             jd_modCamp.setVisible(false);
@@ -1243,8 +1239,8 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         try {
-            String nombre = jcmb_lista_Arch_Camp2.getSelectedItem().toString();
-            admin = new Admin_Campos(nombre);
+            nombreArch = jcmb_lista_Arch_Camp2.getSelectedItem().toString();
+            admin = new Admin_Campos(nombreArch);
             admin.Cargar();
             campos = admin.getCampos();
 //        for (int i = 0; i < campos.size(); i++) {
@@ -1325,23 +1321,27 @@ public class Principal extends javax.swing.JFrame {
 
     private void jbtn_modCamp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_modCamp1ActionPerformed
         // TODO add your handling code here:
-        String nombre = jcmb_lista_Arch_Camp2.getSelectedItem().toString();
+        nombreArch = jcmb_lista_Arch_Camp2.getSelectedItem().toString();
         boolean pr = false;
         Campo c;
+        int longi2=0;
         String name = "", pos = "", tipo = "", longi = "";
         ArrayList<Campo> temp = new ArrayList<Campo>();
-        admin = new Admin_Campos(nombre);
+        admin = new Admin_Campos(nombreArch);
         try {
             admin.Cargar();
             campos = admin.getCampos();
             DefaultTableModel modelo = (DefaultTableModel) jtbl_ListarCamp2.getModel();
-
+            
+            System.out.println("FILAS 1 "+jtbl_ListarCamp2.getRowCount());
+            
             if (jtbl_ListarCamp2.getSelectedRow() >= 0) {
                 name = String.valueOf(modelo.getValueAt(jtbl_ListarCamp2.getSelectedRow(), 0));
                 tipo = String.valueOf(modelo.getValueAt(jtbl_ListarCamp2.getSelectedRow(), 1));
                 longi = String.valueOf(modelo.getValueAt(jtbl_ListarCamp2.getSelectedRow(), 2));
                 tempo = String.valueOf(modelo.getValueAt(jtbl_ListarCamp2.getSelectedRow(), 3));
                 modelo.removeRow(jtbl_ListarCamp2.getSelectedRow());
+                System.out.println("FILAS 2 "+jtbl_ListarCamp2.getRowCount());
 
             }
             jtxt_nombCamp1.setText(name);
@@ -1355,36 +1355,48 @@ public class Principal extends javax.swing.JFrame {
                 jcmb_tipoCamp1.setSelectedIndex(3);
             }
             jtxt_longCamp1.setText(longi);
-
-            for (int i = 0; i < campos.size(); i++) {
-                if (name.equals(campos.get(i).getNombre())) {
-                    campos.get(i).setNombre("0");
+            for (int i = 0; i < jtbl_ListarCamp2.getRowCount(); i++) {
+                name = String.valueOf(modelo.getValueAt(i, 0));
+                tipo = String.valueOf(modelo.getValueAt(i, 1));
+                longi = String.valueOf(modelo.getValueAt(i, 2));
+                longi2 = Integer.parseInt(longi);
+                tempo = String.valueOf(modelo.getValueAt(i, 3));
+                if ("true".equals(tempo)) {
+                    pr=true;
+                } else {
+                    pr=false;
                 }
+                c = new Campo(name, tipo, longi2);
+                c.setPri(pr);
+                temp.add(c);
             }
+            
+  
 
-            for (int i = 0; i < campos.size(); i++) {
-                if ("0".equals((campos.get(i).getNombre()))) {
-                    admin.getCampos().remove(i);
-                    campos=admin.getCampos();
-                }
-            }
-
-//            if (jtbl_ListarCamp1.getSelectedRow()>=0) {
-//                int [] rows = jtbl_ListarCamp.getSelectedRows();
-//                DefaultTableModel modelo = (DefaultTableModel) jtbl_ListarCamp1.getModel();
-//                for (int i = 0; i < campos.size(); i++) {
-//                    pos = String.valueOf(modelo.getValueAt(jtbl_ListarCamp.getSelectedRow(), 0));
-//                    name = campos.get(i).getNombre().toString();
-//                    if (pos.equals(name)) {
-//                        modelo.removeRow(rows[i]);
-//                        campos.remove(i);
-//                        jtbl_ListarCamp.setModel(modelo);
-//                    }
+//            for (int i = 0; i < campos.size(); i++) {
+//                if (name.equals(campos.get(i).getNombre())) {
+//                    campos.get(i).setNombre("0");
 //                }
-//                
 //            }
-            admin.setCampos(campos);
+//
+//            for (int i = 0; i < campos.size(); i++) {
+//                if ("0".equals((campos.get(i).getNombre()))) {
+//                    admin.getCampos().remove(i);
+//                    campos=admin.getCampos();
+//                }
+//                else{
+//                    temp.add(admin.getCampos().get(i));
+//                }
+//            }
+            System.out.println("TEMP");
+            for (int i = 0; i < temp.size(); i++) {
+                System.out.println(temp.get(i).toString());
+            }
+
+            admin.setCampos(temp);
+            campos=admin.getCampos();
             jtbl_ListarCamp2.setModel(modelo);
+            System.out.println("FILAS 3 "+jtbl_ListarCamp2.getRowCount());
         } catch (Exception e) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -1419,6 +1431,10 @@ public class Principal extends javax.swing.JFrame {
             String nombreCamp = jtxt_nombCamp1.getText();
             String tipoCamp = jcmb_tipoCamp1.getSelectedItem().toString();
             int longitud = Integer.parseInt(jtxt_longCamp1.getText());
+            System.out.println("CAMPOS");
+            for (int i = 0; i < campos.size(); i++) {
+                System.out.println(campos.get(i).toString());
+            }
             for (int i = 0; i < campos.size(); i++) {
                 if (nombreCamp.equals(campos.get(i).getNombre())) {
                     JOptionPane.showMessageDialog(null, "Ese nombre ya se uso", "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
@@ -1444,8 +1460,9 @@ public class Principal extends javax.swing.JFrame {
                 };
                 modelo.addRow(newrow);
             }
+            System.out.println("FILAS 4 "+jtbl_ListarCamp2.getRowCount());
             jtbl_ListarCamp2.setModel(modelo);
-
+            System.out.println("FILAS 5 "+jtbl_ListarCamp2.getRowCount());
             jtxt_nombCamp1.setText("");
             jtxt_longCamp1.setText("");
             jcmb_tipoCamp1.setSelectedIndex(0);
@@ -1604,4 +1621,5 @@ public class Principal extends javax.swing.JFrame {
     Admin_Campos admin;
     String tempo = "";
     String name = "";
+    String nombreArch="";
 }
