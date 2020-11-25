@@ -221,11 +221,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel5.setText("Archivos de Campos");
 
         jcmb_lista_Arch_Camp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
-        jcmb_lista_Arch_Camp.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jcmb_lista_Arch_CampItemStateChanged(evt);
-            }
-        });
 
         jbtn_cargar.setText("Cargar");
         jbtn_cargar.addActionListener(new java.awt.event.ActionListener() {
@@ -447,11 +442,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel7.setText("Archivos de Campos");
 
         jcmb_lista_Arch_Camp2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
-        jcmb_lista_Arch_Camp2.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jcmb_lista_Arch_Camp2ItemStateChanged(evt);
-            }
-        });
+
 
         jbtn_cargar2.setText("Cargar");
         jbtn_cargar2.addActionListener(new java.awt.event.ActionListener() {
@@ -889,10 +880,6 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jbtn_cargarActionPerformed
 
-    private void jcmb_lista_Arch_CampItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcmb_lista_Arch_CampItemStateChanged
-
-    }//GEN-LAST:event_jcmb_lista_Arch_CampItemStateChanged
-
     private void jbtn_abrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_abrirActionPerformed
         // TODO add your handling code here
         jtbl_ListarCamp.setModel(new javax.swing.table.DefaultTableModel(
@@ -1011,14 +998,15 @@ public class Principal extends javax.swing.JFrame {
 
     private void jbtn_eliminarCampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_eliminarCampActionPerformed
         // TODO add your handling code here:
-        nombreArch = jcmb_lista_Arch_Camp.getSelectedItem().toString();
+        
+        nombreArch = jcmb_lista_Arch_Camp1.getSelectedItem().toString();
         Campo c;
         int longi2=0;
-        boolean pr;
-        String name = "", pos = "", tipo = "", longi = "", name1="";
+        boolean pr=false;
+        String name = "", tipo = "", longi = "", name1="";
         ArrayList<Campo> temp = new ArrayList<Campo>();
         admin = new Admin_Campos(nombreArch);
-        int[] rows = jtbl_ListarCamp1.getSelectedRows();
+        //int[] rows = jtbl_ListarCamp1.getSelectedRows();
         try {
             admin.Cargar();
             campos = admin.getCampos();
@@ -1028,8 +1016,8 @@ public class Principal extends javax.swing.JFrame {
                 name = String.valueOf(modelo.getValueAt(jtbl_ListarCamp1.getSelectedRow(), 0));
                 for (int i = 0; i < campos.size(); i++) {
                 if (campos.get(i).getNombre().equals(name)) {
-                    //modelo.removeRow(jtbl_ListarCamp1.getSelectedRow());
-                    modelo.removeRow(rows[i]);
+                    modelo.removeRow(jtbl_ListarCamp1.getSelectedRow());
+                    //modelo.removeRow(rows[i]);
                     jtbl_ListarCamp1.setModel(modelo);
                 }
             }
@@ -1056,8 +1044,39 @@ public class Principal extends javax.swing.JFrame {
                 System.out.println(temp.get(i).toString());
             }
             
+            jtbl_ListarCamp1.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "Nombre", "Tipo", "Longitud", "Llave Primaria"
+                }
+        ) {
+            Class[] types = new Class[]{
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean[]{
+                false, false, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+        });
             admin.setCampos(temp);
             campos=admin.getCampos();
+            
+            for (Campo campo1 : campos) {
+                Object[] newrow = {
+                    campo1.getNombre(),
+                    campo1.getContenido(),
+                    campo1.getLongitud(),
+                    campo1.getPri()
+                };
+                modelo.addRow(newrow);
+            }
             jtbl_ListarCamp1.setModel(modelo);
         } catch (Exception e) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, e);
@@ -1261,10 +1280,6 @@ public class Principal extends javax.swing.JFrame {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, e);
         }
     }//GEN-LAST:event_jbtn_abrir2ActionPerformed
-
-    private void jcmb_lista_Arch_Camp2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcmb_lista_Arch_Camp2ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcmb_lista_Arch_Camp2ItemStateChanged
 
     private void jbtn_cargar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_cargar2ActionPerformed
         // TODO add your handling code here:
