@@ -29,6 +29,15 @@ public class Campo implements Serializable{
         this.longitud = longitud;
     }
     
+    public Campo(String Nombre, String contenido, int longitud, boolean pri) {
+        this.Nombre = Nombre;
+        this.contenido = contenido;
+        this.longitud = longitud;
+        this.pri=pri;
+    }
+    
+    
+    
     ArrayList <String> contenidos = new ArrayList();
     public Campo(String Nombre, String Contenido) {
         this.Nombre = Nombre;

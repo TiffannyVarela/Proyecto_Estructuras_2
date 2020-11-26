@@ -12,7 +12,7 @@ public class AccesoCampo {
     int tamRegistro;
     private static ArrayList<String> nombresCampos = new ArrayList();
     
-    public void crearFileCampo(File archivo) throws IOException {
+    public static void crearFileCampo(File archivo) throws IOException {
         if (archivo.exists() && !archivo.isFile()) {
             throw new IOException(archivo.getName() + " no es un archivo");
         }
@@ -21,7 +21,7 @@ public class AccesoCampo {
                 (double) flujo.length() / (double) tamanoRegistro);
     }
 
-    public  void cerrar() throws IOException {
+    public static void cerrar() throws IOException {
         flujo.close();
     }
     
@@ -32,6 +32,9 @@ public class AccesoCampo {
             } else {
                 flujo.seek(i*tamanoRegistro);
                 flujo.writeUTF(campo.getNombre());
+                flujo.writeUTF(campo.getContenido());
+                flujo.writeInt(campo.getLongitud());
+                flujo.writeBoolean(campo.getPri());
                 //tamCampo++;
                 //flujo.writeBoolean(persona.isActivo());
                 return true;
@@ -223,7 +226,7 @@ public class AccesoCampo {
     public static Campo getCampo(int i) throws IOException {
         if (i >= 0 && i <= getNumeroRegistros()){
             flujo.seek(i * tamanoRegistro);
-            return new Campo(flujo.readUTF(), null);
+            return new Campo(flujo.readUTF(), flujo.readUTF(),flujo.readInt(),flujo.readBoolean());
         }else{
             System.out.println("\nNumero de registro fuera de limites");
             return null;
@@ -238,6 +241,38 @@ public class AccesoCampo {
             System.out.println("\nNumero de registro fuera de limites");
             return null;
         }
+    }
+    
+    public static int buscarRegistro(String x) throws IOException{
+        String nombre;
+        if (x==null) {
+            return -1;
+        }
+        
+        for (int i = 0; i < getNumeroRegistros(); i++) {
+            flujo.seek(i*tamanoRegistro);
+            nombre=getCampo(i).getNombre();
+            if (nombre.equals(x)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    public static Campo buscarCampo(String x) throws IOException{
+        String nombre;
+        if (x==null) {
+            return null;
+        }
+        
+        for (int i = 0; i < getNumeroRegistros(); i++) {
+            flujo.seek(i*tamanoRegistro);
+            nombre=getCampo(i).getNombre();
+            if (nombre.equals(x)) {
+                return getCampo(i);
+            }
+        }
+        return null;
     }
     
     public boolean setCampoRegistro(int i, Campo campo) throws IOException {
