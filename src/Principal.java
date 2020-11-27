@@ -46,7 +46,6 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jp_Archivo = new javax.swing.JPanel();
         jd_crearCamp = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -92,12 +91,12 @@ public class Principal extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jtxt_nombCamp1 = new javax.swing.JTextField();
         jbtn_GuardarCamp2 = new javax.swing.JButton();
-        jtp_Principal = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jm_archivo = new javax.swing.JMenu();
         jmi_newarch = new javax.swing.JMenuItem();
         jmi_salvararch = new javax.swing.JMenuItem();
         jmi_closearch = new javax.swing.JMenuItem();
+        jmi_Cargar_Archivo = new javax.swing.JMenuItem();
         jmi_salir = new javax.swing.JMenuItem();
         jm_campos = new javax.swing.JMenu();
         jmi_newcampo = new javax.swing.JMenuItem();
@@ -116,17 +115,6 @@ public class Principal extends javax.swing.JFrame {
         jm_estandar = new javax.swing.JMenu();
         jmi_expexcel = new javax.swing.JMenuItem();
         jmi_expXML = new javax.swing.JMenuItem();
-
-        javax.swing.GroupLayout jp_ArchivoLayout = new javax.swing.GroupLayout(jp_Archivo);
-        jp_Archivo.setLayout(jp_ArchivoLayout);
-        jp_ArchivoLayout.setHorizontalGroup(
-            jp_ArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jp_ArchivoLayout.setVerticalGroup(
-            jp_ArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
 
         jLabel1.setText("Nombre Campo");
 
@@ -575,6 +563,14 @@ public class Principal extends javax.swing.JFrame {
         });
         jm_archivo.add(jmi_closearch);
 
+        jmi_Cargar_Archivo.setText("Cargar Archivo");
+        jmi_Cargar_Archivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_Cargar_ArchivoActionPerformed(evt);
+            }
+        });
+        jm_archivo.add(jmi_Cargar_Archivo);
+
         jmi_salir.setText("Salir");
         jmi_salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -667,17 +663,11 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jtp_Principal, javax.swing.GroupLayout.DEFAULT_SIZE, 1130, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 1154, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jtp_Principal, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 543, Short.MAX_VALUE)
         );
 
         pack();
@@ -685,63 +675,28 @@ public class Principal extends javax.swing.JFrame {
 
     private void jmi_newarchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_newarchActionPerformed
         // TODO add your handling code here:
-        JPanel p = new JPanel();
+        
         String nombre;
-
-        p = jp_Archivo;
-
         nombre = JOptionPane.showInputDialog(this, "Ingrese Nombre: ");
-        metadata = nombre;
-        p.setName(nombre);
-
-        jtp_Principal.add(p);
-        archivo.setNombre(nombre);
+            try {
+                currentFile = new Archivo("./" + nombre + ".txt");
+            } catch (IOException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(this, "El Archivo se creo exitosamente");
     }//GEN-LAST:event_jmi_newarchActionPerformed
 
     private void jmi_salvararchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_salvararchActionPerformed
         // TODO add your handling code here:
-        AccesoCampo cam = new AccesoCampo();
-        File archive;
-        try {
-
-            archive = new File("./" + metadata + ".txt");
-            for (int i = 0; i < registros.size(); i++) {
-                System.out.println("Registro #" + i);
-                for (int j = 0; j < campos.size(); j++) {
-                    System.out.println("Campo #" + i + " :" + registros.get(i).getCampos().get(j).getContenido());
-                }
-            }
-
-            archive = new File("./" + metadata + ".txt");
-
-            cam.crearFileCampo(archive);
-            cam.escribirMetadata(metadata);
-            cam.escribirNumRegistros(registros);
-            cam.escribirCampos(campos, metadata);
-            cam.escribirRegistro(registros);
-            JOptionPane.showMessageDialog(null, "Se ha guardado exitosamente!");
-
-            cam.cerrar();
-        } catch (IOException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        //Pasar la informacion correspondiente a las tablas
-
+        currentFile.setlistaCampo(campos);
+        currentFile.escribirArchivo();
+        JOptionPane.showMessageDialog(this, "El archivo se guardo exitosamente!");
     }//GEN-LAST:event_jmi_salvararchActionPerformed
 
     private void jmi_closearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_closearchActionPerformed
         // TODO add your handling code here:
-        archivo = new Archivo();
-
-        JPanel p = new JPanel();
-
-        jtp_Principal.removeAll();
-
-        registros = new ArrayList();
-        campos = new ArrayList();
-
-        cargado = false;
+        currentFile = null;
+        campos.clear();
     }//GEN-LAST:event_jmi_closearchActionPerformed
 
     private void jmi_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_salirActionPerformed
@@ -761,7 +716,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jbtn_agregarCampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_agregarCampActionPerformed
         // TODO add your handling code here:
-         DefaultListModel modelo = new DefaultListModel();
+        DefaultListModel modelo = new DefaultListModel();
         boolean rep = false;
         try {
             Campo campo;
@@ -808,14 +763,6 @@ public class Principal extends javax.swing.JFrame {
                     jcmb_primaria.setSelectedIndex(1);
                 } else {
                     campo.setPri(false);
-                }
-                try {
-                    AccesoCampo.crearFileCampo(new File(ruta+nombreArch+".rw"));
-                    AccesoCampo.anadirCampo(campo);
-                    AccesoCampo.cerrar();
-                    JOptionPane.showMessageDialog(null, "Escritura Correcta", "Terminado", JOptionPane.INFORMATION_MESSAGE);
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Error en escritura", "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
                 }
                 campos.add(campo);
                 modelo.removeAllElements();
@@ -1508,6 +1455,26 @@ public class Principal extends javax.swing.JFrame {
         jd_modCamp.setVisible(true);
     }//GEN-LAST:event_jmi_modcampoActionPerformed
 
+    private void jmi_Cargar_ArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_Cargar_ArchivoActionPerformed
+        // TODO add your handling code here:
+         JFileChooser fc = new JFileChooser();
+
+        int seleccion = fc.showOpenDialog(this);
+
+        if(seleccion == JFileChooser.APPROVE_OPTION)
+        {
+            File file = fc.getSelectedFile();
+            currentFile = new Archivo(file);
+            try {
+                currentFile.cargarArchivo();
+            } catch (IOException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            campos = currentFile.getListaCampo();
+        }
+
+    }//GEN-LAST:event_jmi_Cargar_ArchivoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1612,6 +1579,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jm_estandar;
     private javax.swing.JMenu jm_indices;
     private javax.swing.JMenu jm_registros;
+    private javax.swing.JMenuItem jmi_Cargar_Archivo;
     private javax.swing.JMenuItem jmi_borrarcampo;
     private javax.swing.JMenuItem jmi_borrarregis;
     private javax.swing.JMenuItem jmi_buscarregis;
@@ -1629,22 +1597,18 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_reindex;
     private javax.swing.JMenuItem jmi_salir;
     private javax.swing.JMenuItem jmi_salvararch;
-    private javax.swing.JPanel jp_Archivo;
     private javax.swing.JTable jtbl_ListarCamp;
     private javax.swing.JTable jtbl_ListarCamp1;
     private javax.swing.JTable jtbl_ListarCamp2;
-    private javax.swing.JTabbedPane jtp_Principal;
     private javax.swing.JTextField jtxt_longCamp;
     private javax.swing.JTextField jtxt_longCamp1;
     private javax.swing.JTextField jtxt_nombCamp;
     private javax.swing.JTextField jtxt_nombCamp1;
     // End of variables declaration//GEN-END:variables
     ArrayList<Campo> campos = new ArrayList();
-    ArrayList<Registro> registros = new ArrayList();
-    Archivo archivo = new Archivo();
+    Archivo currentFile;
     JPanel p = new JPanel();
     File archivoGuardar = null;
-    String metadata = "";
     Boolean cargado = false;
     Admin_Campos admin;
     String ruta = "./Creados/";
