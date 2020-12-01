@@ -675,22 +675,28 @@ public class Principal extends javax.swing.JFrame {
 
     private void jmi_newarchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_newarchActionPerformed
         // TODO add your handling code here:
-        
-        String nombre;
-        nombre = JOptionPane.showInputDialog(this, "Ingrese Nombre: ");
+       JFileChooser path = new JFileChooser();
+       path.showOpenDialog(this);
+        //File file;
+        if (path.getSelectedFile().getPath().substring(path.getSelectedFile().getPath().length() - 4, path.getSelectedFile().getPath().length() - 1).equals(".txt")) {
+            archivoGuardar = new File(path.getSelectedFile().getPath());
+        } else {
+            archivoGuardar = new File(path.getSelectedFile().getPath() + ".rw");
+        }
+        if (!archivoGuardar.exists()) {
             try {
-                currentFile = new Archivo("./" + nombre + ".txt");
+                archivoGuardar.createNewFile();
             } catch (IOException ex) {
-                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
             }
-            JOptionPane.showMessageDialog(this, "El Archivo se creo exitosamente");
+        }
     }//GEN-LAST:event_jmi_newarchActionPerformed
 
     private void jmi_salvararchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_salvararchActionPerformed
         // TODO add your handling code here:
         currentFile.setlistaCampo(campos);
         currentFile.escribirArchivo();
-        JOptionPane.showMessageDialog(this, "El archivo se guardo exitosamente!");
+        //JOptionPane.showMessageDialog(this, "El archivo se guardo exitosamente!");
     }//GEN-LAST:event_jmi_salvararchActionPerformed
 
     private void jmi_closearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_closearchActionPerformed
@@ -1608,7 +1614,7 @@ public class Principal extends javax.swing.JFrame {
     ArrayList<Campo> campos = new ArrayList();
     Archivo currentFile;
     JPanel p = new JPanel();
-    File archivoGuardar = null;
+    File archivoGuardar;
     Boolean cargado = false;
     Admin_Campos admin;
     String ruta = "./Creados/";
